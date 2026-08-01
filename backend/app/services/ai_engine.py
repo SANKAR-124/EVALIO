@@ -63,7 +63,7 @@ async def _call_llm(
             "messages": messages,
         }
         if response_format is not None:
-            groq_kwargs["response_format"] = response_format
+            groq_kwargs["response_format"] = {"type": "json_object"}
 
         groq_response = await client.chat.completions.create(**groq_kwargs)
         
