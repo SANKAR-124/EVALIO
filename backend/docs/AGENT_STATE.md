@@ -15,3 +15,4 @@
 [4.1] backend/app/services/ai_engine.py — DONE — Created _call_llm helper with GLM primary + Groq failover
 [4.2] backend/app/services/ai_engine.py — DONE — Implemented generate_scorecard with JSON schema parsing and validation
 [4.3] backend/app/services/ai_engine.py — DONE — Implemented generate_optimized_prompt with contextual history and markdown fence cleanup
+[4.4] backend/app/services/ai_engine.py — DONE — Implemented run_jailbreak_scan with schema validation and JSON parsing

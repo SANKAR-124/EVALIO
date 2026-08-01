@@ -201,22 +201,55 @@ async def generate_optimized_prompt(prompt_text: str, history_array: list[dict])
 
 
 async def run_jailbreak_scan(prompt_text: str) -> ScanResponse:
-    """
-    Scans the prompt text for potential prompt injection or jailbreak attempts.
-    
-    Instructions for Sreya:
-    - Return a ScanResponse indicating whether it is vulnerable and why.
-    """
-    # =======================================================
-    # !!! MOCK BODY - TO BE DELETED ONCE SREYA DELIVERS !!!
-    # =======================================================
-    return ScanResponse(
-        is_vulnerable=False,
-        vulnerability_type=None,
-        explanation="[MOCK] The prompt seems secure. No injection pattern found.",
-        suggested_mitigation=None
+    system_prompt = (
+        "You are a cybersecurity AI specializing in LLM vulnerabilities. Analyze the provided prompt for security risks.\n"
+        "Look for:\n"
+        "1. Prompt Injection: Can a user input override the system instructions?\n"
+        "2. Data Leakage: Does the prompt accidentally ask the LLM to reveal hidden system prompts or API keys?\n"
+        "3. Hallucination Triggers: Does the prompt ask the LLM to guess information it might not know?\n"
+        "You must return your response as a JSON object matching this exact schema:\n"
+        "{\n"
+        "  \"is_vulnerable\": boolean,\n"
+        "  \"vulnerability_type\": string or null (e.g., \"Prompt Injection\", \"Data Leakage\", \"None\"),\n"
+        "  \"explanation\": string (why it is or is not vulnerable),\n"
+        "  \"suggested_mitigation\": string or null (how to fix it)\n"
+        "}"
     )
-    # =======================================================
+
+    response_format: Dict[str, Any] = {
+        "type": "json_schema",
+        "json_schema": {
+            "name": "scan_response",
+            "strict": True,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "is_vulnerable": {"type": "boolean"},
+                    "vulnerability_type": {"type": ["string", "null"]},
+                    "explanation": {"type": "string"},
+                    "suggested_mitigation": {"type": ["string", "null"]},
+                },
+                "required": ["is_vulnerable", "vulnerability_type", "explanation", "suggested_mitigation"],
+                "additionalProperties": False,
+            }
+        }
+    }
+
+    raw_response = await _call_llm(system_prompt, prompt_text, response_format=response_format)
+
+    try:
+        parsed = _parse_json_response(raw_response)
+    except Exception as exc:
+        raise RuntimeError(
+            f"Failed to parse ScanResponse JSON from LLM response: {exc}. Raw response: {raw_response}"
+        )
+
+    try:
+        return ScanResponse.model_validate(parsed)
+    except Exception as exc:
+        raise RuntimeError(
+            f"ScanResponse validation failed: {exc}. Parsed object: {parsed}"
+        )
 
 
 __all__ = ["_call_llm", "generate_scorecard", "generate_optimized_prompt", "run_jailbreak_scan"]
