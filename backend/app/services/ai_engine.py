@@ -98,7 +98,9 @@ def _parse_json_response(text: str) -> dict:
         raise
 
 
-async def generate_scorecard(prompt_text: str) -> Scorecard:
+# v3.0 extension - system_context parameter added by Sankar. Sreya's core LLM logic unchanged.
+
+async def generate_scorecard(prompt_text: str, system_context: str = "") -> Scorecard:
     system_prompt = (
         "You are a ruthless Senior AI Engineer grading prompts written by junior developers.\n"
         "Analyze the provided prompt based on 4 dimensions:\n"
@@ -110,6 +112,17 @@ async def generate_scorecard(prompt_text: str) -> Scorecard:
         "You must return your response as a JSON object matching this exact schema:\n"
         "{ \"clarity\": integer (0-100), \"constraints\": integer (0-100), \"formatting\": integer (0-100), \"overall_score\": integer (0-100), \"weaknesses\": array of strings }"
     )
+
+    if system_context:
+        eval_context = system_context
+        if "=== EVALUATION DIRECTIVES ===" in system_context:
+            if "=== OPTIMIZATION DIRECTIVES ===" in system_context:
+                parts = system_context.split("=== OPTIMIZATION DIRECTIVES ===")
+                eval_part = parts[0]
+            else:
+                eval_part = system_context
+            eval_context = eval_part.replace("=== EVALUATION DIRECTIVES ===", "").strip()
+        system_prompt = eval_context + "\n\n" + system_prompt
 
     response_format: Dict[str, Any] = {
         "type": "json_schema",
@@ -157,7 +170,7 @@ async def generate_scorecard(prompt_text: str) -> Scorecard:
         return parsed
 
 
-async def generate_optimized_prompt(prompt_text: str, history_array: list[dict]) -> str:
+async def generate_optimized_prompt(prompt_text: str, history_array: list[dict], system_context: str = "") -> str:
     """Generate a rewritten, optimized version of the input prompt."""
     system_prompt = (
         "You are a world-class Prompt Engineer. Your task is to rewrite the provided prompt to make it robust, reliable, and professional.\n"
@@ -170,6 +183,16 @@ async def generate_optimized_prompt(prompt_text: str, history_array: list[dict])
         "5. Add a step-by-step reasoning instruction (e.g., \"Think step-by-step before answering\").\n"
         "Return ONLY the rewritten prompt text. Do not include conversational filler, explanations, or markdown code fences."
     )
+
+    if system_context:
+        opt_context = system_context
+        if "=== OPTIMIZATION DIRECTIVES ===" in system_context:
+            parts = system_context.split("=== OPTIMIZATION DIRECTIVES ===")
+            opt_context = parts[1].strip()
+        elif "=== EVALUATION DIRECTIVES ===" in system_context:
+            opt_context = ""
+        if opt_context:
+            system_prompt = opt_context + "\n\n" + system_prompt
 
     if history_array:
         formatted_history = []

@@ -9,6 +9,8 @@ from app.models import ProjectSession, get_utc_now
 from app.dependencies import get_workspace_id
 from app.services import llm_service
 from app.services.errors import LLMServiceError
+from app.services.use_case_registry import get_use_case
+from app.services.agent_registry import get_agent
 
 # Create router and logger
 router = APIRouter()
@@ -54,6 +56,7 @@ async def evaluate_prompt(
 
     Step 1 — Session: Call the helper to get or create the session.
     Step 2 — History window: Slice the last 10 messages off the session's message list.
+    Step 2.5 — Compose System Context: Retrieve use-case/agent directives and build system_context.
     Step 3 — Parallel LLM calls: Fire the scorecard and optimizer concurrently with a 30s timeout.
     Step 4 — Persist: Save the new user prompt and AI optimized prompt in the session history.
     Step 5 — Respond: Return the EvaluateResponse payload.
@@ -64,12 +67,50 @@ async def evaluate_prompt(
     # Step 2: Slice the last N messages for history context
     history_array = session.messages[-HISTORY_WINDOW:]
 
+    # Step 2.5: Compose system context from use case and agent registries
+    system_context = ""
+    eval_parts = []
+    opt_parts = []
+
+    if request.use_case:
+        use_case_data = get_use_case(request.use_case)
+        if use_case_data:
+            focus_str = "\n".join(f"- {f}" for f in use_case_data["evaluation_focus"])
+            eval_parts.append(f"Domain Evaluation Focus:\n{focus_str}")
+            opt_parts.append(use_case_data["optimizer_system_addition"])
+
+    if request.target_agent:
+        agent_data = get_agent(request.target_agent)
+        if agent_data:
+            tips_str = "\n".join(f"- {tip}" for tip in agent_data["system_prompt_tips"])
+            eval_parts.append(f"Target Agent Tips to evaluate against:\n{tips_str}")
+            
+            agent_instruction = (
+                f"Optimize and format the prompt specifically for the '{agent_data['label']}' model "
+                f"(provided by {agent_data['provider']}) using the '{agent_data['prompting_style']}' prompting style.\n"
+                f"Follow these formatting rules to structure the output prompt:\n"
+                f"{agent_data['formatting_rules']}\n"
+                f"Best practices for this agent:\n"
+                f"{tips_str}"
+            )
+            opt_parts.append(agent_instruction)
+
+    # Combine into a single string with clear tags
+    parts = []
+    if eval_parts:
+        parts.append("=== EVALUATION DIRECTIVES ===\n" + "\n\n".join(eval_parts))
+    if opt_parts:
+        parts.append("=== OPTIMIZATION DIRECTIVES ===\n" + "\n\n".join(opt_parts))
+
+    if parts:
+        system_context = "\n\n".join(parts)
+
     # Step 3: Call LLM scorecard and optimizer in parallel
     try:
         scorecard, optimized_prompt = await asyncio.wait_for(
             asyncio.gather(
-                llm_service.generate_scorecard(request.raw_prompt),
-                llm_service.generate_optimized_prompt(request.raw_prompt, history_array)
+                llm_service.generate_scorecard(request.raw_prompt, system_context=system_context),
+                llm_service.generate_optimized_prompt(request.raw_prompt, history_array, system_context=system_context)
             ),
             timeout=LLM_TIMEOUT
         )
