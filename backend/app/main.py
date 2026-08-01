@@ -68,10 +68,12 @@ app.add_middleware(
 )
 
 # Router inclusions
-from app.routes import evaluate, scan, session
+from app.routes import evaluate, scan, session, use_cases, agents
 app.include_router(evaluate.router, prefix="/api", tags=["Evaluate"])
 app.include_router(scan.router, prefix="/api", tags=["Scan"])
 app.include_router(session.router, prefix="/api", tags=["Session"])
+app.include_router(use_cases.router, prefix="/api", tags=["UseCases"])
+app.include_router(agents.router, prefix="/api", tags=["Agents"])
 
 @app.get("/health", tags=["System"])
 async def health_check():

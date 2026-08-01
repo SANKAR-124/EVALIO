@@ -35,6 +35,14 @@ class EvaluateRequest(BaseModel):
         None,
         description="Pass the session ID to continue a session, or omit to start a new one."
     )
+    use_case: Optional[str] = Field(
+        None,
+        description="The ID of the selected use case from the registry. Pass to enable domain-specific evaluation. Omit for generic behavior."
+    )
+    target_agent: Optional[str] = Field(
+        None,
+        description="The ID of the target LLM agent from the agent registry. Pass to enable agent-specific formatting. Omit for generic formatting."
+    )
 
 class ScanRequest(BaseModel):
     prompt: str = Field(
@@ -155,3 +163,35 @@ class ErrorDetail(BaseModel):
         None,
         description="Technical details/traceback for debugging"
     )
+
+
+# ─── PHASE 5+ EXTENSIONS (v3.0) ───
+
+# ==========================================
+# SECTION 6: Use-Case and Agent Request Extensions
+# (Fields added to EvaluateRequest above)
+# ==========================================
+
+
+# ==========================================
+# SECTION 7: Registry Response Models
+# ==========================================
+
+class UseCaseInfo(BaseModel):
+    """Flat model for the GET /api/use-cases response."""
+    id: str
+    label: str
+    icon: str
+    description: str
+    evaluation_focus: list[str]
+
+class AgentInfo(BaseModel):
+    """Flat model for the GET /api/agents response."""
+    id: str
+    label: str
+    provider: str
+    icon: str
+    strengths: list[str]
+    prompting_style: str
+    system_prompt_tips: list[str]
+    context_window: str

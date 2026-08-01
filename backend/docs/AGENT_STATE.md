@@ -19,3 +19,10 @@
 [4.3] backend/app/routes/session.py — DONE — session list, get, and delete endpoints implemented with workspace isolation checks
 [4.4] backend/app/services/ai_engine.py — DONE — Implemented run_jailbreak_scan with schema validation and JSON parsing
 [4.4] backend/app/main.py — DONE — global exception handlers for RequestValidationError and generic Exception registered
+[7.1] backend/app/services/use_case_registry.py — DONE — 8 use-case entries with evaluation focus, weight overrides, and optimizer additions; get_use_case and list_use_cases helpers defined
+[7.2] backend/app/services/agent_registry.py — DONE — 6 agent entries with prompting styles, formatting rules, and strengths; get_agent and list_agents helpers defined
+[7.3] backend/app/schemas.py — DONE — schemas.py extended — existing classes unchanged except EvaluateRequest gained two optional fields (use_case, target_agent); added UseCaseInfo and AgentInfo response models
+[7.4] backend/app/routes/use_cases.py — DONE — GET /api/use-cases returns 8 use-case entries; registered in main.py
+[7.5] backend/app/routes/agents.py — DONE — GET /api/agents returns 6 agent entries; registered in main.py
+[7.6] backend/app/main.py — DONE — registered use_cases and agents routes under /api prefix; all 5 route groups visible in OpenAPI docs
+
