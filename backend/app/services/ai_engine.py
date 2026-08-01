@@ -153,9 +153,8 @@ async def generate_scorecard(prompt_text: str) -> Scorecard:
     try:
         return Scorecard.model_validate(parsed)
     except Exception as exc:
-        raise RuntimeError(
-            f"Scorecard validation failed: {exc}. Parsed object: {parsed}"
-        )
+        # Fall back to returning the parsed dict so the adapter's coercion can try to heal it
+        return parsed
 
 
 async def generate_optimized_prompt(prompt_text: str, history_array: list[dict]) -> str:
