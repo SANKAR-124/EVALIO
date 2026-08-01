@@ -11,3 +11,6 @@
 [2.5] backend/app/dependencies.py — DONE — header extraction and validation dependency created and tested
 [2.6] backend/app/main.py — DONE — server boots successfully (evaluate, scan, session router inclusions commented out)
 [4.1] backend/app/services/ai_engine.py — DONE — Created _call_llm helper with GLM primary + Groq failover
+[4.2] backend/app/services/ai_engine.py — DONE — Implemented generate_scorecard with JSON schema parsing and validation
+[4.2] backend/app/services/ai_engine.py — DONE — Implemented generate_scorecard with JSON schema parsing and validation
+[4.2] backend/app/services/ai_engine.py — DONE — Implemented generate_scorecard with JSON schema parsing and validation
