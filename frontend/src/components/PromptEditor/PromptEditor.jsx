@@ -33,6 +33,7 @@ export default function PromptEditor({
     setLoading,
     setError,
     selectedAgent,
+    selectedUseCase,
 }) {
   const [selectedTemplate, setSelectedTemplate] = useState('');
 
@@ -53,7 +54,7 @@ export default function PromptEditor({
 
     switch (actionKey) {
       case "Evaluate":
-        data = await evaluatePrompt(prompt);
+        data = await evaluatePrompt(prompt, selectedUseCase, selectedAgent);
         break;
 
       case "Optimize":

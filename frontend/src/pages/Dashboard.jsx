@@ -78,6 +78,13 @@ useEffect(() => {
   loadRegistries();
 }, []);
 
+useEffect(() => {
+  if (workspaceName) {
+    localStorage.setItem('workspace', workspaceName);
+  }
+}, [workspaceName]);
+
+
   const handlePromptEvaluated = (nextPrompt) => {
     const normalizedPrompt = nextPrompt.trim();
 
@@ -233,6 +240,7 @@ useEffect(() => {
             setLoading={setLoading}
             setError={setError}
             selectedAgent={selectedAgent}
+            selectedUseCase={selectedUseCase}
           />
 
           <OutputPanel

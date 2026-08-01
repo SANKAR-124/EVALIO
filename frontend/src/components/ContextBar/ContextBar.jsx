@@ -91,7 +91,7 @@ export default function ContextBar({
                   Select a use case
                 </option>
                 {normalizedUseCases.map((item) => (
-                  <option key={item.id || item.name} value={item.name} className="bg-slate-900 text-slate-200">
+                  <option key={item.id || item.name} value={item.id} className="bg-slate-900 text-slate-200">
                     {item.name}
                   </option>
                 ))}
@@ -117,7 +117,7 @@ export default function ContextBar({
                   Select an agent
                 </option>
                 {normalizedAgents.map((item) => (
-                  <option key={item.id || item.name} value={item.name} className="bg-slate-900 text-slate-200">
+                  <option key={item.id || item.name} value={item.id} className="bg-slate-900 text-slate-200">
                     {item.name}
                   </option>
                 ))}
