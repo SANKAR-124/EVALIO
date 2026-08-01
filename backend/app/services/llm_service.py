@@ -33,12 +33,12 @@ async def _call_engine(func: Callable, *args: Any, **kwargs: Any) -> Any:
     else:
         return await asyncio.to_thread(func, *args, **kwargs)
 
-async def generate_scorecard(prompt_text: str) -> Scorecard:
+async def generate_scorecard(prompt_text: str, system_context: str = "") -> Scorecard:
     """
     Adapter wrapper around ai_engine.generate_scorecard.
     Applies dict coercion, sync-function tolerance, and fence stripping.
     """
-    res = await _call_engine(ai_engine.generate_scorecard, prompt_text)
+    res = await _call_engine(ai_engine.generate_scorecard, prompt_text, system_context=system_context)
     
     # Fence stripping and JSON loading if returned as string representation of JSON
     if isinstance(res, str):
@@ -61,12 +61,12 @@ async def generate_scorecard(prompt_text: str) -> Scorecard:
 
     return res
 
-async def generate_optimized_prompt(prompt_text: str, history_array: list[dict]) -> str:
+async def generate_optimized_prompt(prompt_text: str, history_array: list[dict], system_context: str = "") -> str:
     """
     Adapter wrapper around ai_engine.generate_optimized_prompt.
     Applies sync-function tolerance and strips code fences if present.
     """
-    res = await _call_engine(ai_engine.generate_optimized_prompt, prompt_text, history_array)
+    res = await _call_engine(ai_engine.generate_optimized_prompt, prompt_text, history_array, system_context=system_context)
     if isinstance(res, str):
         res = _strip_fences(res)
     return res
