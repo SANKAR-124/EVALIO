@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 from typing import Optional, Literal, Any
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 def get_utc_now() -> datetime:
     """
@@ -80,6 +80,18 @@ class Scorecard(BaseModel):
         max_length=5,
         description="Specific, actionable weaknesses (max 5)"
     )
+
+    @field_validator("clarity", "constraints", "formatting", "overall_score", mode="before")
+    @classmethod
+    def coerce_and_round_scores(cls, v: Any) -> Any:
+        """
+        Coerces and rounds any float scores returned by the LLM to integers
+        before Pydantic schema validation.
+        """
+        if isinstance(v, (int, float)):
+            return round(v)
+        return v
+
 
 class EvaluateResponse(BaseModel):
     session_id: str
