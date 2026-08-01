@@ -1,8 +1,13 @@
+import logging
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 from contextlib import asynccontextmanager
 from app.core.config import settings
 from app.database import init_db
+
+logger = logging.getLogger("evalio.main")
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -19,6 +24,39 @@ app = FastAPI(
     description="The AI-powered Prompt IDE backend for SYNC 2026",
     lifespan=lifespan
 )
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request, exc: RequestValidationError):
+    """
+    Globally catches Pydantic validation errors and converts them to our standard envelope.
+    """
+    return JSONResponse(
+        status_code=422,
+        content={
+            "detail": {
+                "error_code": "VALIDATION_ERROR",
+                "message": "The request failed validation.",
+                "detail": exc.errors()
+            }
+        }
+    )
+
+@app.exception_handler(Exception)
+async def generic_exception_handler(request, exc: Exception):
+    """
+    Catch-all exception handler to format any unhandled server errors into our standard envelope.
+    """
+    logger.exception(f"Unhandled exception caught by global handler: {exc}")
+    return JSONResponse(
+        status_code=500,
+        content={
+            "detail": {
+                "error_code": "INTERNAL_ERROR",
+                "message": "An unexpected error occurred on the server.",
+                "detail": str(exc)
+            }
+        }
+    )
 
 # CORS middleware config
 app.add_middleware(
