@@ -28,4 +28,5 @@
 [8.1] backend/app/services/ai_engine.py — DONE — added system_context optional parameter to generate_scorecard and generate_optimized_prompt
 [8.2] backend/app/services/llm_service.py — DONE — updated generate_scorecard and generate_optimized_prompt wrappers to accept and pass system_context through to ai_engine
 [8.3] backend/app/routes/evaluate.py — DONE — composed partitioned system_context (eval vs opt instructions) from use-case and agent registries and passed to llm_service wrappers; verified live end-to-end compatibility and custom optimizations
+[9.1] backend/scripts/seed_golden_path.py — DONE — updated golden path seeder script with the XML-structured and domain-rich Power Combo demo session
 
