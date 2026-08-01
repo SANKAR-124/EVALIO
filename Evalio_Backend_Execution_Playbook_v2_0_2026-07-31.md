@@ -236,7 +236,7 @@ git checkout -b feature/frontend-ui      # Anamika
 git checkout -b feature/frontend-logic   # Vithul
 ```
 
-> All backend commands from here on assume your working directory is `evalio/backend/`.
+> All backend commands from here on assume your working directory is `EVALIO/backend.
 
 ### 1.5 `[AGENT]` Create `backend/requirements.txt`
 
