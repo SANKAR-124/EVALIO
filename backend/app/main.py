@@ -29,11 +29,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Router inclusions (commented out until route files are created in later steps)
-# from app.routes import evaluate, scan, session
-# app.include_router(evaluate.router, prefix="/api", tags=["Evaluate"])
-# app.include_router(scan.router, prefix="/api", tags=["Scan"])
-# app.include_router(session.router, prefix="/api", tags=["Session"])
+# Router inclusions
+from app.routes import evaluate, scan, session
+app.include_router(evaluate.router, prefix="/api", tags=["Evaluate"])
+app.include_router(scan.router, prefix="/api", tags=["Scan"])
+app.include_router(session.router, prefix="/api", tags=["Session"])
 
 @app.get("/health", tags=["System"])
 async def health_check():
