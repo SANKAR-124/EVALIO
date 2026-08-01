@@ -3,7 +3,9 @@ import { markdown } from '@codemirror/lang-markdown';
 import { oneDark } from '@codemirror/theme-one-dark';
 import { ScanSearch, Sparkles, Wand2 } from 'lucide-react';
 
-import { evaluatePrompt } from '../../services/evaluate';
+import { evaluatePrompt } from "../../services/evaluate";
+import { optimizePrompt } from "../../services/optimize";
+import { scanPrompt } from "../../services/scan";
 
 const actions = [
   { key: 'Evaluate', label: 'Evaluate', icon: Sparkles },
@@ -12,46 +14,70 @@ const actions = [
 ];
 
 export default function PromptEditor({
-  prompt,
-  onPromptChange,
-  activeAction,
-  onActionChange,
-  onEvaluationComplete,
+    prompt,
+    onPromptChange,
+    activeAction,
+    onActionChange,
+    onEvaluationComplete,
+    loading,
+    setLoading,
+    setError
 }) {
   const handleAction = async (actionKey) => {
-    // Highlight selected button
-    onActionChange(actionKey);
+  onActionChange(actionKey);
 
-    // Only Evaluate is connected for now
-    if (actionKey !== 'Evaluate') {
-      console.log(`${actionKey} endpoint not connected yet.`);
-      return;
+  if (!prompt.trim()) {
+    alert("Please enter a prompt.");
+    return;
+  }
+
+  try {
+    let data;
+
+    switch (actionKey) {
+      case "Evaluate":
+        data = await evaluatePrompt(prompt);
+        break;
+
+      case "Optimize":
+        data = await optimizePrompt(prompt);
+        break;
+
+      case "Scan":
+        data = await scanPrompt(prompt);
+        break;
+
+      default:
+        return;
     }
 
-    // Prevent empty prompts
-    if (!prompt.trim()) {
-      alert('Please enter a prompt first.');
-      return;
-    }
+    onEvaluationComplete(data);
+    const history = JSON.parse(
+  localStorage.getItem("promptHistory") || "[]"
+);
 
-    try {
-      const data = await evaluatePrompt(prompt);
+history.unshift(prompt);
 
-      console.log('Evaluation Response:', data);
+localStorage.setItem(
+  "promptHistory",
+  JSON.stringify(history.slice(0, 10))
+);
+  } catch(err){
 
-      // Send response to Dashboard
-      if (onEvaluationComplete) {
-        onEvaluationComplete(data);
-      }
-    } catch (error) {
-      console.error('Evaluation failed:', error);
+    console.error(err);
 
-      alert(
-        error?.response?.data?.detail ||
-          'Unable to evaluate the prompt. Please try again.'
-      );
-    }
-  };
+    setError(
+        err?.response?.data?.detail ||
+        "Unable to connect to Evalio backend."
+    );
+
+}
+finally{
+
+    setLoading(false);
+
+}
+ };
 
   return (
     <section className="rounded-3xl border border-slate-800 bg-slate-900/60 p-4 shadow-2xl shadow-slate-950/20 backdrop-blur">
@@ -93,6 +119,7 @@ export default function PromptEditor({
 
           return (
             <button
+    disabled={loading}
               key={action.key}
               type="button"
               onClick={() => handleAction(action.key)}
@@ -103,7 +130,9 @@ export default function PromptEditor({
               }`}
             >
               <Icon className="h-4 w-4" />
-              {action.label}
+              {loading && activeAction === action.key
+    ? "Processing..."
+    : action.label}
             </button>
           );
         })}

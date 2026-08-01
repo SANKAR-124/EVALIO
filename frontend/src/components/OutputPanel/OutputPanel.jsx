@@ -3,9 +3,6 @@ import { AlertTriangle, Sparkles } from 'lucide-react';
 const panelContent = {
   Evaluate: {
     title: 'Evaluation Summary',
-    summary: 'Strong prompt structure with clear goals and measurable outcomes.',
-    optimizedPrompt:
-      'You are a product strategist helping teams refine launch messaging. Prioritize clarity, customer value, and concise action points. Keep the output structured for fast review.',
     suggestions: [
       'Add a success metric to ground the response.',
       'Include a persona to sharpen tone and detail.',
@@ -15,12 +12,9 @@ const panelContent = {
       'Context for the target audience is only implied.',
     ],
   },
+
   Optimize: {
     title: 'Optimization Preview',
-    summary:
-      'The instruction now emphasizes role, task, and expected output format.',
-    optimizedPrompt:
-      'Act as an expert prompt engineer. Rewrite this request to be precise, outcome-driven, and easy for an AI assistant to follow.',
     suggestions: [
       'Rephrase the opening to remove ambiguity.',
       'Introduce explicit examples for better consistency.',
@@ -30,12 +24,9 @@ const panelContent = {
       'A few constraints are not clearly prioritized.',
     ],
   },
+
   Scan: {
     title: 'Scan Report',
-    summary:
-      'The request is mostly actionable, but it can be more robust for production use.',
-    optimizedPrompt:
-      'Review the draft prompt for clarity, risk, and completeness.',
     suggestions: [
       'Add boundary conditions.',
       'Define response format.',
@@ -51,11 +42,12 @@ export default function OutputPanel({
   activeAction,
   prompt,
   evaluation,
+  error,
+  loading,
 }) {
   const fallback = panelContent[activeAction];
 
-  const optimizedPrompt =
-    evaluation?.optimized_prompt || fallback.optimizedPrompt;
+  const optimizedPrompt = evaluation?.optimized_prompt || '';
 
   const issues =
     evaluation?.scorecard?.weaknesses?.length
@@ -66,6 +58,8 @@ export default function OutputPanel({
 
   return (
     <section className="rounded-3xl border border-slate-800 bg-slate-900/60 p-4 shadow-2xl shadow-slate-950/20 backdrop-blur">
+
+      {/* Header */}
 
       <div className="mb-4 flex items-center justify-between">
 
@@ -85,26 +79,59 @@ export default function OutputPanel({
 
       </div>
 
+      {/* Error Banner */}
+
+      {error && (
+        <div className="mb-4 rounded-xl border border-red-500/30 bg-red-500/10 p-3">
+          <p className="text-sm text-red-300">
+            {error}
+          </p>
+        </div>
+      )}
+
+      {/* Loading Banner */}
+
+      {loading && (
+        <div className="mb-4 rounded-xl border border-cyan-500/30 bg-cyan-500/10 p-3">
+          <p className="animate-pulse text-sm text-cyan-300">
+            Evaluating prompt...
+          </p>
+        </div>
+      )}
+
       <div className="max-h-[470px] space-y-4 overflow-y-auto pr-2">
+
+        {/* Optimized Prompt */}
 
         <div className="rounded-2xl border border-slate-800/80 bg-slate-950/70 p-4">
 
           <div className="flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-cyan-400" />
+
             <p className="text-sm font-semibold text-slate-200">
               Optimized Prompt
             </p>
           </div>
 
-          <p className="mt-3 text-sm leading-7 text-slate-300">
-            {optimizedPrompt}
-          </p>
+          {evaluation ? (
+            <p className="mt-3 text-sm leading-7 text-slate-300">
+              {optimizedPrompt}
+            </p>
+          ) : (
+            <div className="mt-3 rounded-xl border border-dashed border-slate-700 p-6 text-center">
+              <p className="text-slate-400">
+                Run an evaluation to view optimized prompts.
+              </p>
+            </div>
+          )}
 
           <p className="mt-3 text-xs text-slate-500">
             Source prompt: {prompt.slice(0, 92)}...
           </p>
 
         </div>
+
+        {/* Suggestions + Issues */}
 
         <div className="grid gap-4 lg:grid-cols-2">
 
@@ -115,12 +142,14 @@ export default function OutputPanel({
             </p>
 
             <ul className="mt-3 space-y-2 text-sm text-slate-400">
+
               {suggestions.map((item) => (
                 <li key={item} className="flex gap-2">
-                  <span className="mt-1 h-2 w-2 rounded-full bg-cyan-400" />
+                  <span className="mt-1 h-2 w-2 rounded-full bg-cyan-400"></span>
                   <span>{item}</span>
                 </li>
               ))}
+
             </ul>
 
           </div>
@@ -128,19 +157,30 @@ export default function OutputPanel({
           <div className="rounded-2xl border border-amber-500/20 bg-amber-500/10 p-4">
 
             <div className="flex items-center gap-2">
+
               <AlertTriangle className="h-4 w-4 text-amber-300" />
+
               <p className="text-sm font-semibold text-amber-200">
                 Issues Found
               </p>
+
             </div>
 
             <ul className="mt-3 space-y-2 text-sm text-amber-100/80">
-              {issues.map((item, index) => (
-                <li key={index} className="flex gap-2">
-                  <span className="mt-1 h-2 w-2 rounded-full bg-amber-400" />
-                  <span>{item}</span>
+
+              {issues.length > 0 ? (
+                issues.map((item, index) => (
+                  <li key={index} className="flex gap-2">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-amber-400"></span>
+                    <span>{item}</span>
+                  </li>
+                ))
+              ) : (
+                <li className="text-slate-500">
+                  No evaluation yet.
                 </li>
-              ))}
+              )}
+
             </ul>
 
           </div>

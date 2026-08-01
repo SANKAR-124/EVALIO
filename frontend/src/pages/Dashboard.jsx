@@ -15,6 +15,10 @@ export default function Dashboard() {
 
   const [evaluation, setEvaluation] = useState(null);
 
+  const [loading, setLoading] = useState(false);
+
+  const [error, setError] = useState('');
+
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.14),_transparent_30%),linear-gradient(135deg,_rgba(2,6,23,0.98),_rgba(15,23,42,0.95))] text-slate-100">
       <Navbar />
@@ -41,18 +45,23 @@ export default function Dashboard() {
           <Sidebar />
 
           <PromptEditor
-            prompt={prompt}
-            onPromptChange={setPrompt}
-            activeAction={activeAction}
-            onActionChange={setActiveAction}
-            onEvaluationComplete={setEvaluation}
-          />
+    prompt={prompt}
+    onPromptChange={setPrompt}
+    activeAction={activeAction}
+    onActionChange={setActiveAction}
+    onEvaluationComplete={setEvaluation}
+    loading={loading}
+    setLoading={setLoading}
+    setError={setError}
+    />
 
           <OutputPanel
-            activeAction={activeAction}
-            prompt={prompt}
-            evaluation={evaluation}
-          />
+  activeAction={activeAction}
+  prompt={prompt}
+  evaluation={evaluation}
+  error={error}
+  loading={loading}
+/>
         </div>
 
         <ScoreCard evaluation={evaluation} />
