@@ -12,3 +12,5 @@
 [3.2] backend/app/services/llm_service.py — DONE — adapter created with dict coercion, fence stripping, and thread offloading support
 [3.4] backend/app/routes/evaluate.py — DONE — /evaluate route with parallel LLM execution and contextual history persistence implemented
 [3.5] backend/app/routes/scan.py, app/routes/session.py — DONE — placeholders created and included in main.py
+[4.1] backend/app/services/ai_engine.py — DONE — Created _call_llm helper with GLM primary + Groq failover
+[4.2] backend/app/services/ai_engine.py — DONE — Implemented generate_scorecard with JSON schema parsing and validation
