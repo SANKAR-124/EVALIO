@@ -50,6 +50,10 @@ async def generate_scorecard(prompt_text: str) -> Scorecard:
 
     # Dict coercion to Scorecard Pydantic model
     if isinstance(res, dict):
+        # Patch A: Coerce float values to rounded integers for score fields
+        for field in ["clarity", "constraints", "formatting", "overall_score"]:
+            if field in res and isinstance(res[field], (int, float)):
+                res[field] = round(res[field])
         try:
             res = Scorecard(**res)
         except Exception as e:
