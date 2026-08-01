@@ -14,3 +14,6 @@
 [3.5] backend/app/routes/scan.py, app/routes/session.py — DONE — placeholders created and included in main.py
 [4.1] backend/app/services/ai_engine.py — DONE — Created _call_llm helper with GLM primary + Groq failover
 [4.2] backend/app/services/ai_engine.py — DONE — Implemented generate_scorecard with JSON schema parsing and validation
+[4.2] backend/app/routes/scan.py — DONE — scan endpoint implemented with custom timeout and audit log database persistence
+[4.3] backend/app/routes/session.py — DONE — session list, get, and delete endpoints implemented with workspace isolation checks
+
