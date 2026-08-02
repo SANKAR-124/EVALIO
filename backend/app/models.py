@@ -41,6 +41,7 @@ class ScanResult(Document):
     is_vulnerable: bool
     vulnerability_type: Optional[str] = None
     explanation: str
+    suggested_mitigation: Optional[str] = None
     created_at: datetime = Field(default_factory=get_utc_now)
 
     class Settings:

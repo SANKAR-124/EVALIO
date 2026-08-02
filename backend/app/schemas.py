@@ -109,6 +109,7 @@ class EvaluateResponse(BaseModel):
         description="The fully rewritten, production-ready prompt"
     )
     chat_history: list[ChatMessage] = Field(default_factory=list)
+    agent_response: Optional[str] = None
 
 class ScanResponse(BaseModel):
     is_vulnerable: bool = Field(
