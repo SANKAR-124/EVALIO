@@ -27,34 +27,30 @@ AGENT_REGISTRY: dict[str, dict] = {
         ],
         "prompting_style": "xml_tags",
         "system_prompt_tips": [
-            "Use XML tags (<role>, <instructions>, <constraints>, <output_format>) to structure your prompt — Claude's instruction-following improves significantly with explicit hierarchical structure.",
-            "Provide a detailed role definition at the start to set context and persona.",
-            "Break complex tasks into numbered sections or sub-tasks within XML tags.",
-            "Claude reliably follows very long prompts — don't be afraid of length when precision matters.",
-            "Use <example> tags with input/output pairs for few-shot demonstrations.",
+            "Claude performs best when instructions are wrapped in XML tags that create an explicit hierarchy — this is its strongest differentiator.",
+            "Long, detailed prompts improve Claude's output rather than degrading it — never truncate for brevity.",
+            "Claude reliably distinguishes between <instructions>, <constraints>, and <output_format> when they are in separate tags.",
+            "Few-shot examples inside <example> tags with <input> and <output> sub-tags produce highly consistent results.",
+            "Claude follows negative constraints ('do NOT do X') with high fidelity when placed in a dedicated <constraints> tag.",
         ],
         "formatting_rules": (
-            "Restructure the optimized prompt using XML tags for maximum Claude compatibility.\n"
-            "Wrap the output in the following hierarchical structure:\n"
-            "  <role>Define the expert persona and domain expertise</role>\n"
-            "  <instructions>\n"
-            "    <step>Step 1: First major task requirement</step>\n"
-            "    <step>Step 2: Second major task requirement</step>\n"
-            "    ... (as many steps as needed)\n"
-            "  </instructions>\n"
-            "  <constraints>\n"
-            "    List all boundaries, rules, and things to avoid\n"
-            "  </constraints>\n"
-            "  <output_format>\n"
-            "    Specify exact output structure, fields, and formatting expectations\n"
-            "  </output_format>\n"
-            "  <examples>\n"
-            "    <example>\n"
-            "      <input>Sample input</input>\n"
-            "      <output>Expected output</output>\n"
-            "    </example>\n"
-            "  </examples>\n"
-            "Use nested tags for sub-sections. Claude's instruction-following is strongest when structure is explicit and hierarchical."
+            "When optimizing for Claude, restructure the prompt using XML tags.\n"
+            "Use this hierarchical template:\n\n"
+            "<role>One-sentence expert persona definition</role>\n\n"
+            "<instructions>\n"
+            "  <step>First task requirement</step>\n"
+            "  <step>Second task requirement</step>\n"
+            "</instructions>\n\n"
+            "<constraints>\n"
+            "  - Rule or boundary 1\n"
+            "  - Rule or boundary 2\n"
+            "</constraints>\n\n"
+            "<output_format>\n"
+            "  Exact output structure specification\n"
+            "</output_format>\n\n"
+            "Only include <examples> if the original prompt contained examples or the task pattern is non-obvious.\n"
+            "When including examples, use: <example><input>...</input><output>...</output></example>\n"
+            "Claude's instruction-following is strongest with explicit, hierarchical XML structure."
         ),
         "context_window": "200K tokens",
     },
@@ -76,26 +72,28 @@ AGENT_REGISTRY: dict[str, dict] = {
         ],
         "prompting_style": "markdown_sections",
         "system_prompt_tips": [
-            "Use markdown headers (## Role, ## Task, ## Output Format) to organize your prompt into clear sections.",
-            "Provide an explicit output schema when you need structured data — GPT excels at producing valid JSON when the schema is spelled out.",
-            "Include 2-3 few-shot examples showing the exact input-output pattern you expect.",
-            "Be explicit about what NOT to do — GPT responds well to negative constraints stated clearly.",
-            "Use **bold** emphasis for critical rules and constraints that must not be violated.",
+            "GPT performs best with clear markdown section headers (## Role, ## Task, ## Constraints, ## Output Format) that segment the prompt into distinct zones.",
+            "When JSON output is needed, provide the exact schema with field names, types, and descriptions — GPT produces valid JSON with high reliability when the schema is explicit.",
+            "2-3 few-shot examples are sufficient; more than 3 rarely improves output and wastes tokens.",
+            "GPT responds strongly to negative constraints stated as explicit 'Do NOT...' rules — place these in a dedicated ## Constraints section.",
+            "Use **bold** for non-negotiable rules. GPT weights bolded text more heavily in its instruction-following.",
         ],
         "formatting_rules": (
-            "Restructure the optimized prompt using markdown headers and sub-headers for maximum GPT compatibility.\n"
-            "Use the following section structure:\n"
-            "  ## Role\n"
-            "  Define the expert persona.\n\n"
-            "  ## Task\n"
-            "  Describe the primary objective clearly.\n\n"
-            "  ## Constraints\n"
-            "  List all rules, boundaries, and negative constraints. Use **bold** for critical rules.\n\n"
-            "  ## Output Format\n"
-            "  Specify the exact output structure. If JSON, provide the schema. If prose, describe the sections.\n\n"
-            "  ## Examples\n"
-            "  Include 2-3 input/output examples.\n\n"
-            "ChatGPT excels when the output format is specified in markdown and key rules are bolded for emphasis."
+            "When optimizing for ChatGPT, restructure the prompt using markdown headers.\n"
+            "Use this section template:\n\n"
+            "## Role\n"
+            "Define the expert persona.\n\n"
+            "## Task\n"
+            "State the exact objective in one clear paragraph.\n\n"
+            "## Constraints\n"
+            "- Rule 1\n"
+            "- **Non-negotiable rule (bold this)**\n"
+            "- Rule 3\n\n"
+            "## Output Format\n"
+            "Specify the exact structure. For JSON, include the full schema. For prose, list the sections.\n\n"
+            "## Examples\n"
+            "Include 2-3 input/output examples only if the task pattern is non-obvious.\n\n"
+            "Bold all critical rules. GPT weights bolded instructions more heavily."
         ),
         "context_window": "128K tokens",
     },
@@ -117,25 +115,24 @@ AGENT_REGISTRY: dict[str, dict] = {
         ],
         "prompting_style": "concise_direct",
         "system_prompt_tips": [
-            "Keep system prompts concise and direct — Gemini's 2M context means brevity in the system prompt, not length.",
-            "Specify output structure explicitly using bullet points or short format descriptions.",
-            "Leverage grounding features for factual accuracy when available.",
-            "Avoid overly long or repetitive system prompts — Gemini processes efficiently with clear, compact instructions.",
-            "Use short paragraphs and bullet points instead of deeply nested structures.",
+            "Gemini's massive context window is for INPUT data, not for verbose system prompts — keep the system prompt tight and direct.",
+            "Short bullet-pointed instructions outperform long paragraphs for Gemini.",
+            "Gemini responds well to numbered lists with clear, sequential logic.",
+            "Avoid deeply nested structures, XML scaffolding, or repetitive instructions — Gemini processes efficiently and redundancy can confuse it.",
+            "State the output format in one concise block rather than spreading format instructions across multiple sections.",
         ],
         "formatting_rules": (
-            "Restructure the optimized prompt to be clean, concise, and direct for maximum Gemini compatibility.\n"
-            "Use short paragraphs and bullet points. Avoid excessive nesting or verbose XML structures.\n"
-            "Structure as:\n"
-            "  1. Role: One sentence defining the persona.\n"
-            "  2. Task: Clear, direct statement of what to do.\n"
-            "  3. Key rules:\n"
-            "     - Rule 1\n"
-            "     - Rule 2\n"
-            "     - Rule 3\n"
-            "  4. Output: Specify the exact format in one concise block.\n\n"
-            "Gemini's massive context window means the SYSTEM prompt should be tight and efficient. "
-            "Focus on clear, direct instructions rather than elaborate structural scaffolding."
+            "When optimizing for Gemini, make the prompt concise and direct.\n"
+            "Use this compact structure:\n\n"
+            "**Role:** One-sentence persona.\n\n"
+            "**Task:** One clear sentence stating the objective.\n\n"
+            "**Rules:**\n"
+            "- Rule 1\n"
+            "- Rule 2\n"
+            "- Rule 3\n\n"
+            "**Output:** Exact format specification in one block.\n\n"
+            "Do NOT add XML tags, verbose explanations, or multiple sections.\n"
+            "Gemini performs best with minimal, high-signal instructions."
         ),
         "context_window": "2M tokens",
     },
@@ -152,38 +149,37 @@ AGENT_REGISTRY: dict[str, dict] = {
             "Strong open-source model with flexible deployment options",
             "Good performance with explicit delimiters and boundary markers",
             "Benefits from redundancy in critical constraints",
-            "Effective with few-shot examples (3-5 recommended)",
+            "Effective with few-shot examples",
             "Competitive reasoning with explicit step-by-step instructions",
         ],
         "prompting_style": "explicit_delimiters",
         "system_prompt_tips": [
-            "Use explicit delimiters (triple backticks, ###, ---) to clearly separate sections of your prompt.",
-            "Provide very explicit formatting rules — LLaMA benefits from being told exactly how to structure output.",
-            "Include 3-5 few-shot examples to establish the expected pattern reliably.",
-            "State critical constraints clearly AND repeat them at the end of the prompt for emphasis.",
-            "Use boundary markers between role definition, task, constraints, and output format.",
+            "LLaMA relies heavily on explicit section delimiters (###, ---) to distinguish prompt zones — without them, instructions bleed together.",
+            "Critical constraints must appear TWICE: once in the constraints section and again in a final REMINDER section — this reinforcement significantly improves compliance.",
+            "Boundary markers (---) between sections prevent LLaMA from conflating adjacent instructions.",
+            "2-3 concrete examples are the sweet spot. Avoid asking for more than 3 — fabricated examples degrade output quality.",
+            "State the output format with an explicit template showing the exact structure, including placeholder text.",
         ],
         "formatting_rules": (
-            "Restructure the optimized prompt using clear section delimiters for maximum LLaMA compatibility.\n"
-            "Use the following structure with explicit boundary markers:\n"
-            "  ### ROLE ###\n"
-            "  Define the expert persona.\n\n"
-            "  ---\n\n"
-            "  ### TASK ###\n"
-            "  Describe the objective.\n\n"
-            "  ---\n\n"
-            "  ### CONSTRAINTS ###\n"
-            "  List all rules and boundaries. Repeat critical constraints.\n\n"
-            "  ---\n\n"
-            "  ### OUTPUT FORMAT ###\n"
-            "  Specify exact output structure.\n\n"
-            "  ---\n\n"
-            "  ### EXAMPLES ###\n"
-            "  Provide 3-5 input/output examples enclosed in triple backticks.\n\n"
-            "  ---\n\n"
-            "  ### REMINDER ###\n"
-            "  Repeat the most critical constraints here.\n\n"
-            "LLaMA benefits from redundancy and explicit boundary markers between sections."
+            "When optimizing for LLaMA, use explicit delimiters to separate every section.\n"
+            "Use this structure:\n\n"
+            "### ROLE ###\n"
+            "Expert persona definition.\n"
+            "---\n\n"
+            "### TASK ###\n"
+            "Clear objective statement.\n"
+            "---\n\n"
+            "### RULES ###\n"
+            "- Rule 1\n"
+            "- Rule 2\n"
+            "- Rule 3\n"
+            "---\n\n"
+            "### OUTPUT FORMAT ###\n"
+            "Exact output structure with a template.\n"
+            "---\n\n"
+            "### REMINDER ###\n"
+            "Repeat the 2-3 most critical constraints here. This reinforcement is essential for LLaMA.\n\n"
+            "Use --- between every section. Repeat critical rules at the end."
         ),
         "context_window": "128K tokens",
     },
@@ -205,28 +201,27 @@ AGENT_REGISTRY: dict[str, dict] = {
         ],
         "prompting_style": "chain_of_thought",
         "system_prompt_tips": [
-            "Use 'think step by step' reasoning patterns — DeepSeek performs best when chain-of-thought is explicitly requested.",
-            "Break complex problems into intermediate steps with clear checkpoints.",
-            "Ask for explicit reasoning chains before the final answer.",
-            "State constraints at both the start and end of the prompt to reinforce boundaries.",
-            "Structure prompts as: constraints → reasoning instructions → output format.",
+            "DeepSeek's core advantage is chain-of-thought reasoning — always include an explicit 'think step by step' instruction for any non-trivial task.",
+            "Structure the prompt so reasoning comes BEFORE the final answer — DeepSeek produces stronger outputs when the thinking process is requested upfront.",
+            "Breaking a problem into explicit sub-steps with labels ('Step 1: Analyze...', 'Step 2: Execute...', 'Step 3: Verify...') dramatically improves accuracy.",
+            "State constraints at the beginning so DeepSeek's reasoning chain respects them throughout.",
+            "For code tasks, asking DeepSeek to 'explain your approach before writing code' produces more correct solutions.",
         ],
         "formatting_rules": (
-            "Restructure the optimized prompt to leverage chain-of-thought reasoning for maximum DeepSeek compatibility.\n"
-            "Structure the prompt in three distinct phases:\n\n"
-            "  Phase 1 — Role and Constraints:\n"
-            "  Define the persona and list all constraints upfront.\n\n"
-            "  Phase 2 — Step-by-Step Thinking Instructions:\n"
-            "  Include explicit reasoning directives:\n"
-            "    'Think step by step before answering.'\n"
-            "    'Break this problem into the following sub-steps:'\n"
-            "    '  Step 1: [first reasoning step]'\n"
-            "    '  Step 2: [second reasoning step]'\n"
-            "    '  Step 3: [synthesis and conclusion]'\n\n"
-            "  Phase 3 — Output Format:\n"
-            "  Specify the exact deliverable format.\n"
-            "  Restate the most critical constraints.\n\n"
-            "DeepSeek performs best when chain-of-thought reasoning is explicitly structured into the prompt."
+            "When optimizing for DeepSeek, structure the prompt to enforce chain-of-thought reasoning.\n"
+            "Use this three-phase structure:\n\n"
+            "### CONTEXT ###\n"
+            "Role definition and all constraints listed upfront.\n\n"
+            "### THINKING PROCESS ###\n"
+            "Add this instruction block:\n"
+            "'Before responding, think through this step by step:\n"
+            "1. [First reasoning step relevant to the task]\n"
+            "2. [Second reasoning step]\n"
+            "3. [Final synthesis or conclusion]'\n\n"
+            "### OUTPUT ###\n"
+            "Specify the exact deliverable format.\n"
+            "Restate the 1-2 most critical constraints.\n\n"
+            "Always include an explicit reasoning instruction. DeepSeek's strongest capability is activated by chain-of-thought prompts."
         ),
         "context_window": "128K tokens",
     },
@@ -248,25 +243,24 @@ AGENT_REGISTRY: dict[str, dict] = {
         ],
         "prompting_style": "concise_xml",
         "system_prompt_tips": [
-            "Keep system prompts concise — Mistral values efficiency and every word should earn its place.",
-            "Use XML-like structures for complex tasks, but keep them shorter than for Claude.",
-            "Be direct and explicit about the expected output format.",
-            "Avoid unnecessary context, preambles, or verbose explanations in the system prompt.",
-            "Front-load the most important instructions — Mistral's attention is strongest at the prompt start.",
+            "Mistral's attention is strongest at the START of the prompt — front-load the most critical instructions.",
+            "Every word should earn its place. Mistral performs worse with verbose or redundant prompts compared to Claude or GPT.",
+            "Short XML-like tags (<role>, <task>, <rules>, <format>) work well, but keep each tag's content to 1-3 lines maximum.",
+            "Mistral follows direct, imperative instructions ('Return JSON with these fields: ...') more reliably than descriptive ones ('You should return JSON...').",
+            "Avoid few-shot examples unless absolutely necessary — Mistral performs well with zero-shot when instructions are clear.",
         ],
         "formatting_rules": (
-            "Restructure the optimized prompt to be compact with XML-like tags for maximum Mistral compatibility.\n"
-            "Use a streamlined structure:\n"
-            "  <role>One-sentence persona definition</role>\n"
-            "  <task>Clear, direct task statement</task>\n"
-            "  <rules>\n"
-            "    - Critical constraint 1\n"
-            "    - Critical constraint 2\n"
-            "    - Critical constraint 3\n"
-            "  </rules>\n"
-            "  <format>Exact output specification</format>\n\n"
-            "Keep it shorter than Claude's XML structure. Mistral values efficiency — "
-            "every word should earn its place. Avoid redundancy and verbose explanations."
+            "When optimizing for Mistral, make the prompt as compact as possible.\n"
+            "Use this streamlined XML-like structure:\n\n"
+            "<role>One-sentence persona</role>\n"
+            "<task>Direct task statement</task>\n"
+            "<rules>\n"
+            "- Critical rule 1\n"
+            "- Critical rule 2\n"
+            "</rules>\n"
+            "<format>Exact output specification</format>\n\n"
+            "Keep each tag's content to 1-3 lines. Do NOT add examples, preambles, or verbose explanations.\n"
+            "Front-load the most important instruction. Omit anything non-essential."
         ),
         "context_window": "128K tokens",
     },

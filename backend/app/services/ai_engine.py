@@ -102,16 +102,40 @@ def _parse_json_response(text: str) -> dict:
 
 async def generate_scorecard(prompt_text: str, system_context: str = "") -> Scorecard:
     system_prompt = (
-        "You are a ruthless Senior AI Engineer grading prompts written by junior developers.\n"
-        "Analyze the provided prompt based on 4 dimensions:\n"
-        "1. Clarity: Is the instruction specific or vague?\n"
-        "2. Constraints: Are boundaries, rules, and edge cases well-defined?\n"
-        "3. Formatting: Is the output structure specified? (e.g., XML tags, markdown, JSON)\n"
-        "4. Overall Score: A weighted average of the above.\n"
-        "Provide a score out of 100 for each dimension. Also provide a list of specific, actionable weaknesses (max 5 items) that explain why the prompt failed.\n"
-        "You must return your response as a JSON object matching this exact schema:\n"
-        "{ \"clarity\": integer (0-100), \"constraints\": integer (0-100), \"formatting\": integer (0-100), \"overall_score\": integer (0-100), \"weaknesses\": array of strings }"
-    )
+    "You are a Senior Prompt Quality Analyst. Evaluate the user-provided AI prompt "
+    "on 4 dimensions and return structured JSON feedback.\n\n"
+
+    "SCORING RUBRIC (each dimension 0-100):\n"
+    "1. CLARITY — Unambiguous, specific, actionable instructions.\n"
+    "   90-100: Zero ambiguity. Every instruction is precise.\n"
+    "   70-89: Clear intent, minor vagueness in 1-2 spots.\n"
+    "   40-69: Understandable but contains vague phrases.\n"
+    "   0-39: Confusing, multiple interpretations, or incoherent.\n\n"
+
+    "2. CONSTRAINTS — Defined boundaries, rules, exclusions, edge cases.\n"
+    "   90-100: Explicit do/don't rules, edge cases covered.\n"
+    "   70-89: Key constraints present, some gaps.\n"
+    "   40-69: Basic boundaries only (e.g. 'keep it short').\n"
+    "   0-39: No constraints or entirely open-ended.\n\n"
+
+    "3. FORMATTING — Specified output structure (JSON, XML, markdown, etc.).\n"
+    "   90-100: Precise structure with schema/tags/sections defined.\n"
+    "   70-89: Structure mentioned but not fully specified.\n"
+    "   40-69: Vague hints (e.g. 'format nicely').\n"
+    "   0-39: No output format specified.\n\n"
+
+    "4. OVERALL_SCORE — Weighted: Clarity×0.40 + Constraints×0.35 + Formatting×0.25\n\n"
+
+    "WEAKNESSES — Return 3-5 items. Each must be specific and actionable:\n"
+    "  - Quote the problematic text from the prompt.\n"
+    "  - State what is wrong and why it matters.\n"
+    "  - Suggest a concrete fix.\n"
+    "  If overall_score >= 85, return improvement opportunities instead of weaknesses.\n\n"
+
+    "OUTPUT: Return ONLY valid JSON matching this schema:\n"
+    '{"clarity": int, "constraints": int, "formatting": int, "overall_score": int, "weaknesses": [string, ...]}\n'
+    "No markdown. No code fences. No explanation. Raw JSON only."
+)
 
     if system_context:
         eval_context = system_context
@@ -173,16 +197,30 @@ async def generate_scorecard(prompt_text: str, system_context: str = "") -> Scor
 async def generate_optimized_prompt(prompt_text: str, history_array: list[dict], system_context: str = "") -> str:
     """Generate a rewritten, optimized version of the input prompt."""
     system_prompt = (
-        "You are a world-class Prompt Engineer. Your task is to rewrite the provided prompt to make it robust, reliable, and professional.\n"
-        "If prior chat history is provided, use it to understand the user's intent and refine the rewritten prompt accordingly. This is called Contextual Memory.\n"
-        "Follow these strict rules for the optimized prompt:\n"
-        "1. Assign a clear Persona (e.g., \"You are an expert copywriter...\").\n"
-        "2. Define the exact Task.\n"
-        "3. Provide Context and constraints (what to do and what NOT to do).\n"
-        "4. Define the exact Output Format using XML tags (e.g., <summary>, <body>, <tags>).\n"
-        "5. Add a step-by-step reasoning instruction (e.g., \"Think step-by-step before answering\").\n"
-        "Return ONLY the rewritten prompt text. Do not include conversational filler, explanations, or markdown code fences."
-    )
+    "You are an expert Prompt Engineer. Rewrite the provided prompt to maximize "
+    "clarity, constraint coverage, and output reliability.\n\n"
+
+    "CONTEXT AWARENESS:\n"
+    "If prior chat history is provided, analyze it to understand the user's evolving "
+    "intent. Use that understanding to refine the rewritten prompt so it reflects "
+    "what the user actually needs, not just what they typed.\n\n"
+
+    "REWRITE GUIDELINES (apply where relevant — do not force elements that don't fit):\n"
+    "1. PERSONA — Assign a role if the prompt lacks one (e.g. 'You are a senior Python developer…').\n"
+    "2. TASK — State the exact objective in one clear sentence.\n"
+    "3. CONTEXT & CONSTRAINTS — Specify what to do, what to avoid, and any boundaries.\n"
+    "4. OUTPUT FORMAT — Define the expected structure (XML tags, JSON schema, markdown sections, etc.).\n"
+    "5. REASONING — Add a thinking/step-by-step instruction if the task benefits from it.\n\n"
+
+    "QUALITY RULES:\n"
+    "- Preserve the original intent and meaning. Do not change what the user is asking for.\n"
+    "- If the prompt is already well-structured, enhance it rather than rewriting from scratch.\n"
+    "- Remove redundancy. Merge overlapping instructions.\n"
+    "- Use precise, unambiguous language. Replace vague words ('nice', 'good', 'better') with specific criteria.\n"
+    "- Do NOT add conversational filler, meta-commentary, or formatting the user didn't request.\n\n"
+
+    "OUTPUT: Return ONLY the rewritten prompt text. No explanations, no preamble, no markdown code fences, no commentary about what you changed."
+)
 
     if system_context:
         opt_context = system_context
