@@ -1,252 +1,55 @@
-import { useEffect, useMemo, useState } from 'react';
-import { AlertTriangle, Copy, Download, Sparkles } from 'lucide-react';
+import { useMemo, useState } from 'react';
+import { AlertTriangle, CheckCircle2, Copy, Download, ShieldAlert } from 'lucide-react';
 
-function normalizeAgentLabel(agent) {
-  if (!agent) {
-    return 'Agent';
-  }
+const TABS = ['Scorecard', 'Scanner', 'History'];
 
-  return agent;
+const metricBars = [
+  { key: 'clarity', label: 'Clarity', color: 'bg-emerald-400' },
+  { key: 'constraints', label: 'Constraints', color: 'bg-amber-400' },
+  { key: 'formatting', label: 'Formatting', color: 'bg-cyan-400' },
+];
+
+function ScoreRing({ score = 0 }) {
+  const radius = 46;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (Math.min(Math.max(score, 0), 100) / 100) * circumference;
+
+  return (
+    <svg width="120" height="120" viewBox="0 0 120 120" className="mx-auto">
+      <circle cx="60" cy="60" r={radius} fill="none" stroke="#292524" strokeWidth="10" />
+      <circle
+        cx="60"
+        cy="60"
+        r={radius}
+        fill="none"
+        stroke="url(#scoreGradient)"
+        strokeWidth="10"
+        strokeLinecap="round"
+        strokeDasharray={circumference}
+        strokeDashoffset={offset}
+        transform="rotate(-90 60 60)"
+      />
+      <defs>
+        <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#fbbf24" />
+          <stop offset="100%" stopColor="#f97316" />
+        </linearGradient>
+      </defs>
+      <text x="60" y="66" textAnchor="middle" className="fill-stone-100 text-2xl font-semibold">
+        {score}
+      </text>
+    </svg>
+  );
 }
 
-function renderInlineMarkdown(text) {
-  if (!text) {
-    return null;
-  }
-
-  const parts = [];
-  const regex = /(\*\*([^*]+)\*\*|`([^`]+)`|__([^_]+)__|_([^_]+)_|\*([^*]+)\*)/g;
-  let lastIndex = 0;
-  let match;
-
-  while ((match = regex.exec(text)) !== null) {
-    if (match.index > lastIndex) {
-      parts.push(text.slice(lastIndex, match.index));
-    }
-
-    if (match[2]) {
-      parts.push(<strong key={`${match.index}-strong`}>{match[2]}</strong>);
-    } else if (match[3]) {
-      parts.push(
-        <code key={`${match.index}-code`} className="rounded bg-slate-800/80 px-1.5 py-0.5 text-[0.8rem] text-cyan-200">
-          {match[3]}
-        </code>,
-      );
-    } else if (match[4]) {
-      parts.push(<strong key={`${match.index}-strong2`}>{match[4]}</strong>);
-    } else if (match[5]) {
-      parts.push(<em key={`${match.index}-em`}>{match[5]}</em>);
-    } else if (match[6]) {
-      parts.push(<em key={`${match.index}-em2`}>{match[6]}</em>);
-    }
-
-    lastIndex = regex.lastIndex;
-  }
-
-  if (lastIndex < text.length) {
-    parts.push(text.slice(lastIndex));
-  }
-
-  return parts;
-}
-
-function renderResponseContent(content) {
-  if (!content) {
-    return (
-      <div className="rounded-xl border border-dashed border-slate-700 p-6 text-center">
-        <p className="text-sm text-slate-400">
-          Waiting for an agent response to render here.
-        </p>
-      </div>
-    );
-  }
-
-  const isMarkdown = /(^#{1,6}\s)|(^[-*]\s)|(```)|(`[^`]+`)|(^>\s)/m.test(content);
-
-  if (!isMarkdown) {
-    return (
-      <div className="whitespace-pre-wrap break-words text-sm leading-7 text-slate-300">
-        {content}
-      </div>
-    );
-  }
-
-  const blocks = [];
-  const lines = content.split('\n');
-  let paragraphLines = [];
-  let listItems = [];
-  let codeBlock = [];
-  let inCodeBlock = false;
-
-  const flushParagraph = () => {
-    if (paragraphLines.length > 0) {
-      blocks.push(
-        <p key={`paragraph-${blocks.length}`} className="text-sm leading-7 text-slate-300">
-          {renderInlineMarkdown(paragraphLines.join(' ').trim())}
-        </p>,
-      );
-      paragraphLines = [];
-    }
-  };
-
-  const flushList = () => {
-    if (listItems.length > 0) {
-      blocks.push(
-        <ul key={`list-${blocks.length}`} className="ml-5 list-disc space-y-2 text-sm leading-7 text-slate-300">
-          {listItems.map((item, index) => (
-            <li key={`${item}-${index}`}>{renderInlineMarkdown(item)}</li>
-          ))}
-        </ul>,
-      );
-      listItems = [];
-    }
-  };
-
-  const flushCodeBlock = () => {
-    if (codeBlock.length > 0) {
-      blocks.push(
-        <pre key={`code-${blocks.length}`} className="overflow-x-auto rounded-xl border border-slate-800 bg-slate-950/80 p-4 text-sm leading-6 text-cyan-200">
-          <code>{codeBlock.join('\n')}</code>
-        </pre>,
-      );
-      codeBlock = [];
-    }
-  };
-
-  lines.forEach((line) => {
-    if (line.trim().startsWith('```')) {
-      if (inCodeBlock) {
-        flushCodeBlock();
-        inCodeBlock = false;
-      } else {
-        flushParagraph();
-        flushList();
-        inCodeBlock = true;
-      }
-      return;
-    }
-
-    if (inCodeBlock) {
-      codeBlock.push(line);
-      return;
-    }
-
-    if (/^#{1,6}\s+/.test(line)) {
-      flushParagraph();
-      flushList();
-      const level = line.match(/^(#{1,6})/)[1].length;
-      const HeadingTag = `h${Math.min(level, 3)}`;
-      blocks.push(
-        <HeadingTag key={`heading-${blocks.length}`} className="text-sm font-semibold text-slate-100">
-          {line.replace(/^(#{1,6})\s+/, '')}
-        </HeadingTag>,
-      );
-      return;
-    }
-
-    if (/^>\s*/.test(line)) {
-      flushParagraph();
-      flushList();
-      blocks.push(
-        <blockquote key={`quote-${blocks.length}`} className="rounded-xl border border-slate-800 bg-slate-950/70 p-3 text-sm italic text-slate-400">
-          {renderInlineMarkdown(line.replace(/^>\s*/, '').trim())}
-        </blockquote>,
-      );
-      return;
-    }
-
-    if (/^[-*]\s+/.test(line)) {
-      flushParagraph();
-      listItems.push(line.replace(/^[-*]\s+/, '').trim());
-      return;
-    }
-
-    if (line.trim() === '') {
-      flushParagraph();
-      flushList();
-      return;
-    }
-
-    paragraphLines.push(line.trim());
-  });
-
-  flushParagraph();
-  flushList();
-  flushCodeBlock();
-
-  return <div className="space-y-3">{blocks}</div>;
-}
-
-const panelContent = {
-  Evaluate: {
-    title: 'Evaluation Summary',
-    suggestions: [
-      'Add a success metric to ground the response.',
-      'Include a persona to sharpen tone and detail.',
-    ],
-    issues: [
-      'The prompt uses a broad objective without a defined output format.',
-      'Context for the target audience is only implied.',
-    ],
-  },
-
-  Optimize: {
-    title: 'Optimization Preview',
-    suggestions: [
-      'Rephrase the opening to remove ambiguity.',
-      'Introduce explicit examples for better consistency.',
-    ],
-    issues: [
-      'The original prompt is slightly verbose.',
-      'A few constraints are not clearly prioritized.',
-    ],
-  },
-
-  Scan: {
-    title: 'Scan Report',
-    suggestions: [
-      'Add boundary conditions.',
-      'Define response format.',
-    ],
-    issues: [
-      'Missing guardrails.',
-      'Output style not specified.',
-    ],
-  },
-};
-
-export default function OutputPanel({
-  activeAction,
-  prompt,
-  evaluation,
-  error,
-  loading,
-  vulnerabilityDetected = false,
-  selectedAgent,
-  agentResponse,
-}) {
+export default function OutputPanel({ evaluation, error, loading }) {
+  const [activeTab, setActiveTab] = useState('Scorecard');
   const [copied, setCopied] = useState(false);
-  const fallback = panelContent[activeAction];
 
   const optimizedPrompt = evaluation?.optimized_prompt || '';
-  const activeAgent = useMemo(() => normalizeAgentLabel(selectedAgent), [selectedAgent]);
-  const responseContent = useMemo(() => agentResponse || evaluation?.agent_response || evaluation?.response || evaluation?.output || '', [agentResponse, evaluation]);
+  const scorecard = evaluation?.scorecard;
 
-  const issues =
-    evaluation?.scorecard?.weaknesses?.length
-      ? evaluation.scorecard.weaknesses
-      : fallback.issues;
-
-  const suggestions = fallback.suggestions;
-
-  useEffect(() => {
-    if (!copied) {
-      return undefined;
-    }
-
-    const timeoutId = window.setTimeout(() => setCopied(false), 2000);
-    return () => window.clearTimeout(timeoutId);
-  }, [copied]);
+  const chatHistory = useMemo(() => evaluation?.chat_history || [], [evaluation]);
 
   const handleCopyOutput = async () => {
     if (!optimizedPrompt) {
@@ -256,8 +59,9 @@ export default function OutputPanel({
     try {
       await navigator.clipboard.writeText(optimizedPrompt);
       setCopied(true);
-    } catch (error) {
-      console.error('Failed to copy output', error);
+      window.setTimeout(() => setCopied(false), 1500);
+    } catch (err) {
+      console.error('Failed to copy output', err);
     }
   };
 
@@ -295,6 +99,27 @@ export default function OutputPanel({
         </div>
 
         <div className="flex items-center gap-2">
+    <section className="flex h-full flex-col overflow-hidden rounded-2xl border border-stone-800 bg-stone-950/60">
+      {/* Tab bar */}
+      <div className="flex items-center justify-between border-b border-stone-800/80 bg-stone-900/40 px-3 py-2">
+        <div className="flex items-center gap-1">
+          {TABS.map((tab) => (
+            <button
+              key={tab}
+              type="button"
+              onClick={() => setActiveTab(tab)}
+              className={`rounded-lg px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] transition ${
+                activeTab === tab
+                  ? 'bg-amber-500/15 text-amber-300'
+                  : 'text-stone-500 hover:text-stone-300'
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-1.5">
           <button
             type="button"
             onClick={handleCopyOutput}
@@ -309,175 +134,156 @@ export default function OutputPanel({
             type="button"
             onClick={handleDownloadOutput}
             disabled={!optimizedPrompt}
-            className="flex items-center gap-2 rounded-full border border-slate-700 bg-slate-950/80 px-3 py-2 text-xs font-medium text-slate-300 transition hover:border-slate-600 hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
+            title="Download optimized prompt"
+            className="rounded-lg p-1.5 text-stone-400 transition hover:bg-stone-800 hover:text-stone-200 disabled:cursor-not-allowed disabled:opacity-40"
           >
             <Download className="h-3.5 w-3.5" />
-            Download
           </button>
-
-          <div className="rounded-full border border-violet-400/20 bg-violet-400/10 px-3 py-1 text-xs font-medium text-violet-300">
-            {activeAction}
-          </div>
         </div>
-
       </div>
 
-      {/* Error Banner */}
-
-      {error && (
-        <div className="mb-4 rounded-xl border border-red-500/30 bg-red-500/10 p-3">
-          <p className="text-sm text-red-300">
-            {error}
-          </p>
-        </div>
-      )}
-
-      {/* Loading Banner */}
-
-      {loading && (
-        <div className="mb-4 rounded-xl border border-cyan-500/30 bg-cyan-500/10 p-3">
-          <p className="animate-pulse text-sm text-cyan-300">
-            Evaluating prompt...
-          </p>
-        </div>
-      )}
-
-      {vulnerabilityDetected ? (
-        <div className="mb-4 rounded-2xl border border-red-500/40 bg-red-500/10 p-4 shadow-lg shadow-red-950/20">
-          <div className="flex items-start justify-between gap-3">
-            <div className="flex gap-3">
-              <div className="mt-0.5 rounded-full bg-red-500/20 p-2 text-red-300">
-                <AlertTriangle className="h-4 w-4" />
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-red-200">
-                  Potential Prompt Injection Detected
-                </p>
-                <p className="mt-1 text-sm text-red-200/80">
-                  This prompt may contain malicious or unsafe instructions.
-                </p>
-              </div>
-            </div>
-            <button
-              type="button"
-              className="rounded-full border border-red-400/30 bg-red-500/10 px-3 py-1.5 text-xs font-medium text-red-200 transition hover:bg-red-500/20"
-            >
-              View Details
-            </button>
-          </div>
+      {copied ? (
+        <div className="border-b border-emerald-500/20 bg-emerald-500/10 px-3 py-1.5 text-center text-[11px] text-emerald-300">
+          Copied optimized prompt to clipboard
         </div>
       ) : null}
 
-      <div className="max-h-[470px] space-y-4 overflow-y-auto pr-2">
-
-        {/* Agent Output */}
-
-        <div className="rounded-2xl border border-slate-800/80 bg-slate-950/70 p-4">
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <div className="flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-violet-400" />
-              <p className="text-sm font-semibold text-slate-200">
-                Agent Output
-              </p>
-            </div>
-            <span className="rounded-full border border-violet-500/20 bg-violet-500/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-violet-200">
-              {activeAgent}
-            </span>
-          </div>
-
-          <div className="mt-4 max-h-[220px] overflow-y-auto rounded-xl border border-slate-800/80 bg-slate-950/80 p-4">
-            {renderResponseContent(responseContent)}
-          </div>
+      {error ? (
+        <div className="border-b border-red-500/30 bg-red-500/10 px-3 py-2">
+          <p className="text-xs text-red-300">{error}</p>
         </div>
+      ) : null}
 
-        {/* Optimized Prompt */}
+      <div className="flex-1 overflow-y-auto p-4">
+        {activeTab === 'Scorecard' ? (
+          scorecard ? (
+            <div>
+              <ScoreRing score={scorecard.overall_score} />
+              <p className="mt-1 text-center text-[11px] font-semibold uppercase tracking-[0.24em] text-stone-500">
+                Overall Score
+              </p>
 
-        <div className="rounded-2xl border border-slate-800/80 bg-slate-950/70 p-4">
+              <div className="mt-6 space-y-4">
+                {metricBars.map((metric) => (
+                  <div key={metric.key}>
+                    <div className="mb-1 flex items-center justify-between text-sm">
+                      <span className="text-stone-300">{metric.label}</span>
+                      <span className="font-semibold text-stone-100">{scorecard[metric.key]}</span>
+                    </div>
+                    <div className="h-1.5 overflow-hidden rounded-full bg-stone-800">
+                      <div
+                        className={`h-1.5 rounded-full ${metric.color}`}
+                        style={{ width: `${scorecard[metric.key]}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
 
-          <div className="flex items-center gap-2">
-            <Sparkles className="h-4 w-4 text-cyan-400" />
+              <div className="mt-6">
+                <div className="mb-2 flex items-center gap-1.5">
+                  <AlertTriangle className="h-3.5 w-3.5 text-amber-400" />
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-stone-400">Weaknesses</p>
+                </div>
 
-            <p className="text-sm font-semibold text-slate-200">
-              Optimized Prompt
-            </p>
-          </div>
-
-          {evaluation ? (
-            <p className="mt-3 text-sm leading-7 text-slate-300">
-              {optimizedPrompt}
-            </p>
+                <div className="space-y-2">
+                  {scorecard.weaknesses?.length ? (
+                    scorecard.weaknesses.map((weakness, index) => (
+                      <div
+                        key={index}
+                        className="rounded-lg border-l-2 border-red-500/60 bg-red-500/5 px-3 py-2 text-xs leading-5 text-red-200/90"
+                      >
+                        {weakness}
+                      </div>
+                    ))
+                  ) : (
+                    <p className="text-xs text-stone-500">No weaknesses flagged.</p>
+                  )}
+                </div>
+              </div>
+            </div>
           ) : (
-            <div className="mt-3 rounded-xl border border-dashed border-slate-700 p-6 text-center">
-              <p className="text-slate-400">
-                Run an evaluation to view optimized prompts.
-              </p>
+            <div className="rounded-xl border border-dashed border-stone-800 p-6 text-center">
+              <p className="text-sm text-stone-500">{loading ? 'Evaluating…' : 'Run Evaluate to see the scorecard.'}</p>
             </div>
-          )}
+          )
+        ) : null}
 
-          <p className="mt-3 text-xs text-slate-500">
-            Source prompt: {prompt.slice(0, 92)}...
-          </p>
+        {activeTab === 'Scanner' ? (
+          evaluation ? (
+            <div className="space-y-3">
+              <div
+                className={`flex items-center gap-2 rounded-xl border px-3 py-2.5 text-sm font-medium ${
+                  evaluation.is_vulnerable
+                    ? 'border-red-500/40 bg-red-500/10 text-red-200'
+                    : 'border-emerald-500/30 bg-emerald-500/10 text-emerald-200'
+                }`}
+              >
+                {evaluation.is_vulnerable ? (
+                  <ShieldAlert className="h-4 w-4" />
+                ) : (
+                  <CheckCircle2 className="h-4 w-4" />
+                )}
+                {evaluation.is_vulnerable
+                  ? `Vulnerability detected: ${evaluation.vulnerability_type || 'Potential Threat'}`
+                  : 'No vulnerabilities detected'}
+              </div>
 
-        </div>
+              {evaluation.explanation ? (
+                <div>
+                  <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-stone-500">Explanation</p>
+                  <p className="text-sm leading-6 text-stone-300">{evaluation.explanation}</p>
+                </div>
+              ) : null}
 
-        {/* Suggestions + Issues */}
+              {evaluation.suggested_mitigation ? (
+                <div>
+                  <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-stone-500">
+                    Suggested Mitigation
+                  </p>
+                  <div className="rounded-lg border-l-2 border-amber-500/60 bg-amber-500/5 px-3 py-2 text-sm leading-6 text-amber-100/90">
+                    {evaluation.suggested_mitigation}
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          ) : (
+            <div className="rounded-xl border border-dashed border-stone-800 p-6 text-center">
+              <p className="text-sm text-stone-500">{loading ? 'Scanning…' : 'Run Evaluate to see scan results.'}</p>
+            </div>
+          )
+        ) : null}
 
-        <div className="grid gap-4 lg:grid-cols-2">
-
-          <div className="rounded-2xl border border-slate-800/80 bg-slate-950/60 p-4">
-
-            <p className="text-sm font-semibold text-slate-200">
-              Suggestions
-            </p>
-
-            <ul className="mt-3 space-y-2 text-sm text-slate-400">
-
-              {suggestions.map((item) => (
-                <li key={item} className="flex gap-2">
-                  <span className="mt-1 h-2 w-2 rounded-full bg-cyan-400"></span>
-                  <span>{item}</span>
-                </li>
+        {activeTab === 'History' ? (
+          chatHistory.length ? (
+            <div className="space-y-2.5">
+              {chatHistory.map((message, index) => (
+                <div key={index} className="rounded-lg border border-stone-800/80 bg-stone-900/50 p-2.5">
+                  <div className="mb-1 flex items-center justify-between">
+                    <span
+                      className={`text-[10px] font-semibold uppercase tracking-[0.2em] ${
+                        message.role === 'user' ? 'text-cyan-300' : 'text-amber-300'
+                      }`}
+                    >
+                      {message.role}
+                    </span>
+                    {message.timestamp ? (
+                      <span className="text-[10px] text-stone-600">
+                        {new Date(message.timestamp).toLocaleTimeString()}
+                      </span>
+                    ) : null}
+                  </div>
+                  <p className="line-clamp-3 text-xs leading-5 text-stone-400">{message.content}</p>
+                </div>
               ))}
-
-            </ul>
-
-          </div>
-
-          <div className="rounded-2xl border border-amber-500/20 bg-amber-500/10 p-4">
-
-            <div className="flex items-center gap-2">
-
-              <AlertTriangle className="h-4 w-4 text-amber-300" />
-
-              <p className="text-sm font-semibold text-amber-200">
-                Issues Found
-              </p>
-
             </div>
-
-            <ul className="mt-3 space-y-2 text-sm text-amber-100/80">
-
-              {issues.length > 0 ? (
-                issues.map((item, index) => (
-                  <li key={index} className="flex gap-2">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-amber-400"></span>
-                    <span>{item}</span>
-                  </li>
-                ))
-              ) : (
-                <li className="text-slate-500">
-                  No evaluation yet.
-                </li>
-              )}
-
-            </ul>
-
-          </div>
-
-        </div>
-
+          ) : (
+            <div className="rounded-xl border border-dashed border-stone-800 p-6 text-center">
+              <p className="text-sm text-stone-500">No history yet for this session.</p>
+            </div>
+          )
+        ) : null}
       </div>
-
     </section>
   );
 }
