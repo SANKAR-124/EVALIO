@@ -1,17 +1,17 @@
 {
   "0": "Dashboard.jsx",
-  "1": "evaluate.py",
+  "1": "llm_service.py",
   "2": "Evalio — Feature Extension Playbook (Sankar + Coding Agent)",
   "3": "Evalio — Backend Execution Playbook (Sankar + Coding Agent)",
-  "4": "main.py",
-  "5": "schemas.py",
+  "4": "ProjectSession",
+  "5": "evaluate.py",
   "6": "dependencies",
   "7": "package.json",
   "8": "ai_engine.py",
-  "9": "2. Phase 1 — Architecture Lock (Hours 0–3)",
+  "9": "3. Phase 2 — Core Engineering (Hours 3–8)",
   "10": "1. Prerequisites & Downloads (Pre-Hackathon — Tonight)",
-  "11": "use_cases.py",
-  "12": ".oxlintrc.json",
+  "11": "main.py",
+  "12": "Landing.jsx",
   "13": "React + Vite",
   "14": "rules/graphify.md",
   "15": "workflows/graphify.md",
@@ -21,5 +21,7 @@
   "19": "app/__init__.py",
   "20": "init.py",
   "21": "vite.config.js",
-  "22": "README.md"
+  "22": "README.md",
+  "23": "StatusBar.jsx",
+  "24": "Loader.jsx"
 }

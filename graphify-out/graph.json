@@ -33,7 +33,7 @@
       "_origin": "ast",
       "id": "backend_app_core_config",
       "community": 4,
-      "community_name": "main.py",
+      "community_name": "ProjectSession",
       "norm_label": "config.py"
     },
     {
@@ -44,7 +44,7 @@
       "_origin": "ast",
       "id": "backend_app_core_config_settings",
       "community": 4,
-      "community_name": "main.py",
+      "community_name": "ProjectSession",
       "norm_label": "settings"
     },
     {
@@ -55,7 +55,7 @@
       "_origin": "ast",
       "id": "basesettings",
       "community": 4,
-      "community_name": "main.py",
+      "community_name": "ProjectSession",
       "norm_label": "basesettings"
     },
     {
@@ -66,7 +66,7 @@
       "_origin": "ast",
       "id": "backend_app_core_config_rationale_4",
       "community": 4,
-      "community_name": "main.py",
+      "community_name": "ProjectSession",
       "norm_label": "central configuration loaded from .env file for the evalio application."
     },
     {
@@ -77,7 +77,7 @@
       "_origin": "ast",
       "id": "backend_app_database",
       "community": 4,
-      "community_name": "main.py",
+      "community_name": "ProjectSession",
       "norm_label": "database.py"
     },
     {
@@ -87,7 +87,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "backend_app_database_init_db",
-      "community": 4,
+      "community": 11,
       "community_name": "main.py",
       "norm_label": "init_db()"
     },
@@ -99,7 +99,7 @@
       "_origin": "ast",
       "id": "asynciomotorclient",
       "community": 4,
-      "community_name": "main.py",
+      "community_name": "ProjectSession",
       "norm_label": "asynciomotorclient"
     },
     {
@@ -110,7 +110,7 @@
       "_origin": "ast",
       "id": "backend_app_database_get_db_client",
       "community": 4,
-      "community_name": "main.py",
+      "community_name": "ProjectSession",
       "norm_label": "get_db_client()"
     },
     {
@@ -120,7 +120,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "backend_app_database_rationale_8",
-      "community": 4,
+      "community": 11,
       "community_name": "main.py",
       "norm_label": "initializes the mongodb connection and beanie odm. returns the motor async..."
     },
@@ -132,7 +132,7 @@
       "_origin": "ast",
       "id": "backend_app_database_rationale_28",
       "community": 4,
-      "community_name": "main.py",
+      "community_name": "ProjectSession",
       "norm_label": "async context manager yielding a motor client, ensuring it is closed in a..."
     },
     {
@@ -142,7 +142,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "backend_app_dependencies",
-      "community": 1,
+      "community": 5,
       "community_name": "evaluate.py",
       "norm_label": "dependencies.py"
     },
@@ -153,7 +153,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "backend_app_dependencies_get_workspace_id",
-      "community": 1,
+      "community": 5,
       "community_name": "evaluate.py",
       "norm_label": "get_workspace_id()"
     },
@@ -164,7 +164,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "backend_app_dependencies_rationale_5",
-      "community": 1,
+      "community": 5,
       "community_name": "evaluate.py",
       "norm_label": "dependency to extract and validate the workspace id from the request headers...."
     },
@@ -186,7 +186,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "backend_app_main",
-      "community": 4,
+      "community": 11,
       "community_name": "main.py",
       "norm_label": "main.py"
     },
@@ -197,7 +197,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "backend_app_main_lifespan",
-      "community": 4,
+      "community": 11,
       "community_name": "main.py",
       "norm_label": "lifespan()"
     },
@@ -208,8 +208,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "fastapi",
-      "community": 1,
-      "community_name": "evaluate.py",
+      "community": 11,
+      "community_name": "main.py",
       "norm_label": "fastapi"
     },
     {
@@ -219,7 +219,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "exception_handler",
-      "community": 4,
+      "community": 11,
       "community_name": "main.py",
       "norm_label": "exception_handler"
     },
@@ -230,7 +230,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "backend_app_main_validation_exception_handler",
-      "community": 4,
+      "community": 11,
       "community_name": "main.py",
       "norm_label": "validation_exception_handler()"
     },
@@ -241,7 +241,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "requestvalidationerror",
-      "community": 4,
+      "community": 11,
       "community_name": "main.py",
       "norm_label": "requestvalidationerror"
     },
@@ -252,7 +252,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "backend_app_main_generic_exception_handler",
-      "community": 4,
+      "community": 11,
       "community_name": "main.py",
       "norm_label": "generic_exception_handler()"
     },
@@ -263,7 +263,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_app_main_py_exception",
-      "community": 4,
+      "community": 11,
       "community_name": "main.py",
       "norm_label": "exception"
     },
@@ -274,7 +274,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_app_main_py_get",
-      "community": 4,
+      "community": 11,
       "community_name": "main.py",
       "norm_label": "get"
     },
@@ -285,7 +285,7 @@
       "source_location": "L79",
       "_origin": "ast",
       "id": "backend_app_main_health_check",
-      "community": 4,
+      "community": 11,
       "community_name": "main.py",
       "norm_label": "health_check()"
     },
@@ -296,7 +296,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "backend_app_main_rationale_30",
-      "community": 4,
+      "community": 11,
       "community_name": "main.py",
       "norm_label": "globally catches pydantic validation errors and converts them to our standard..."
     },
@@ -307,7 +307,7 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "backend_app_main_rationale_46",
-      "community": 4,
+      "community": 11,
       "community_name": "main.py",
       "norm_label": "catch-all exception handler to format any unhandled server errors into our..."
     },
@@ -318,7 +318,7 @@
       "source_location": "L80",
       "_origin": "ast",
       "id": "backend_app_main_rationale_80",
-      "community": 4,
+      "community": 11,
       "community_name": "main.py",
       "norm_label": "simple health check endpoint returning status."
     },
@@ -330,7 +330,7 @@
       "_origin": "ast",
       "id": "backend_app_models",
       "community": 4,
-      "community_name": "main.py",
+      "community_name": "ProjectSession",
       "norm_label": "models.py"
     },
     {
@@ -340,8 +340,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "backend_app_models_get_utc_now",
-      "community": 4,
-      "community_name": "main.py",
+      "community": 5,
+      "community_name": "evaluate.py",
       "norm_label": "get_utc_now()"
     },
     {
@@ -351,8 +351,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_app_models_py_datetime",
-      "community": 4,
-      "community_name": "main.py",
+      "community": 5,
+      "community_name": "evaluate.py",
       "norm_label": "datetime"
     },
     {
@@ -363,7 +363,7 @@
       "_origin": "ast",
       "id": "backend_app_models_projectsession",
       "community": 4,
-      "community_name": "main.py",
+      "community_name": "ProjectSession",
       "norm_label": "projectsession"
     },
     {
@@ -374,7 +374,7 @@
       "_origin": "ast",
       "id": "document",
       "community": 4,
-      "community_name": "main.py",
+      "community_name": "ProjectSession",
       "norm_label": "document"
     },
     {
@@ -385,7 +385,7 @@
       "_origin": "ast",
       "id": "backend_app_models_settings",
       "community": 4,
-      "community_name": "main.py",
+      "community_name": "ProjectSession",
       "norm_label": "settings"
     },
     {
@@ -396,7 +396,7 @@
       "_origin": "ast",
       "id": "backend_app_models_scanresult",
       "community": 4,
-      "community_name": "main.py",
+      "community_name": "ProjectSession",
       "norm_label": "scanresult"
     },
     {
@@ -406,8 +406,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "backend_app_models_rationale_7",
-      "community": 4,
-      "community_name": "main.py",
+      "community": 5,
+      "community_name": "evaluate.py",
       "norm_label": "returns the current timezone-aware utc datetime."
     },
     {
@@ -418,7 +418,7 @@
       "_origin": "ast",
       "id": "backend_app_models_rationale_13",
       "community": 4,
-      "community_name": "main.py",
+      "community_name": "ProjectSession",
       "norm_label": "a chat session scoped to a workspace_id (cheat-code auth)."
     },
     {
@@ -429,7 +429,7 @@
       "_origin": "ast",
       "id": "backend_app_models_rationale_36",
       "community": 4,
-      "community_name": "main.py",
+      "community_name": "ProjectSession",
       "norm_label": "persisted vulnerability scan results, kept for demo auditability."
     },
     {
@@ -439,7 +439,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "backend_app_routes_init",
-      "community": 4,
+      "community": 11,
       "community_name": "main.py",
       "norm_label": "routes/__init__.py"
     },
@@ -450,8 +450,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "backend_app_routes_agents",
-      "community": 5,
-      "community_name": "schemas.py",
+      "community": 11,
+      "community_name": "main.py",
       "norm_label": "agents.py"
     },
     {
@@ -461,8 +461,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_app_routes_agents_py_get",
-      "community": 5,
-      "community_name": "schemas.py",
+      "community": 11,
+      "community_name": "main.py",
       "norm_label": "get"
     },
     {
@@ -472,8 +472,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "backend_app_routes_agents_get_agents",
-      "community": 5,
-      "community_name": "schemas.py",
+      "community": 11,
+      "community_name": "main.py",
       "norm_label": "get_agents()"
     },
     {
@@ -483,7 +483,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "backend_app_routes_evaluate",
-      "community": 1,
+      "community": 5,
       "community_name": "evaluate.py",
       "norm_label": "evaluate.py"
     },
@@ -494,7 +494,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "backend_app_routes_evaluate_get_or_create_session",
-      "community": 1,
+      "community": 5,
       "community_name": "evaluate.py",
       "norm_label": "_get_or_create_session()"
     },
@@ -505,7 +505,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_app_routes_evaluate_py_post",
-      "community": 1,
+      "community": 5,
       "community_name": "evaluate.py",
       "norm_label": "post"
     },
@@ -516,7 +516,7 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "backend_app_routes_evaluate_evaluate_prompt",
-      "community": 1,
+      "community": 5,
       "community_name": "evaluate.py",
       "norm_label": "evaluate_prompt()"
     },
@@ -527,7 +527,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "backend_app_routes_evaluate_rationale_24",
-      "community": 1,
+      "community": 5,
       "community_name": "evaluate.py",
       "norm_label": "retrieves an existing session by id (ensuring it belongs to the active..."
     },
@@ -538,7 +538,7 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "backend_app_routes_evaluate_rationale_54",
-      "community": 1,
+      "community": 5,
       "community_name": "evaluate.py",
       "norm_label": "evaluates and optimizes a user prompt. step 1 \u2014 session: call the helper to get..."
     },
@@ -550,7 +550,7 @@
       "_origin": "ast",
       "id": "backend_app_routes_scan",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "scan.py"
     },
     {
@@ -561,7 +561,7 @@
       "_origin": "ast",
       "id": "backend_app_routes_scan_py_post",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "post"
     },
     {
@@ -572,7 +572,7 @@
       "_origin": "ast",
       "id": "backend_app_routes_scan_scan_prompt",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "scan_prompt()"
     },
     {
@@ -583,7 +583,7 @@
       "_origin": "ast",
       "id": "backend_app_routes_scan_rationale_22",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "runs the adversarial jailbreak agent against the prompt. designed for parallel..."
     },
     {
@@ -594,7 +594,7 @@
       "_origin": "ast",
       "id": "backend_app_routes_session",
       "community": 5,
-      "community_name": "schemas.py",
+      "community_name": "evaluate.py",
       "norm_label": "session.py"
     },
     {
@@ -605,7 +605,7 @@
       "_origin": "ast",
       "id": "backend_app_routes_session_py_get",
       "community": 5,
-      "community_name": "schemas.py",
+      "community_name": "evaluate.py",
       "norm_label": "get"
     },
     {
@@ -616,7 +616,7 @@
       "_origin": "ast",
       "id": "backend_app_routes_session_list_sessions",
       "community": 5,
-      "community_name": "schemas.py",
+      "community_name": "evaluate.py",
       "norm_label": "list_sessions()"
     },
     {
@@ -627,7 +627,7 @@
       "_origin": "ast",
       "id": "backend_app_routes_session_get_session_detail",
       "community": 5,
-      "community_name": "schemas.py",
+      "community_name": "evaluate.py",
       "norm_label": "get_session_detail()"
     },
     {
@@ -638,7 +638,7 @@
       "_origin": "ast",
       "id": "delete",
       "community": 4,
-      "community_name": "main.py",
+      "community_name": "ProjectSession",
       "norm_label": "delete"
     },
     {
@@ -649,7 +649,7 @@
       "_origin": "ast",
       "id": "backend_app_routes_session_delete_session",
       "community": 4,
-      "community_name": "main.py",
+      "community_name": "ProjectSession",
       "norm_label": "delete_session()"
     },
     {
@@ -660,7 +660,7 @@
       "_origin": "ast",
       "id": "backend_app_routes_session_rationale_14",
       "community": 5,
-      "community_name": "schemas.py",
+      "community_name": "evaluate.py",
       "norm_label": "retrieves all chat sessions for the active workspace, sorted by updated_at..."
     },
     {
@@ -671,7 +671,7 @@
       "_origin": "ast",
       "id": "backend_app_routes_session_rationale_37",
       "community": 5,
-      "community_name": "schemas.py",
+      "community_name": "evaluate.py",
       "norm_label": "retrieves the full details of a specific chat session, including messages...."
     },
     {
@@ -682,7 +682,7 @@
       "_origin": "ast",
       "id": "backend_app_routes_session_rationale_82",
       "community": 4,
-      "community_name": "main.py",
+      "community_name": "ProjectSession",
       "norm_label": "deletes a specific chat session. raises 404 if the session does not exist or..."
     },
     {
@@ -693,7 +693,7 @@
       "_origin": "ast",
       "id": "backend_app_routes_use_cases",
       "community": 11,
-      "community_name": "use_cases.py",
+      "community_name": "main.py",
       "norm_label": "use_cases.py"
     },
     {
@@ -704,7 +704,7 @@
       "_origin": "ast",
       "id": "backend_app_routes_use_cases_py_get",
       "community": 11,
-      "community_name": "use_cases.py",
+      "community_name": "main.py",
       "norm_label": "get"
     },
     {
@@ -715,7 +715,7 @@
       "_origin": "ast",
       "id": "backend_app_routes_use_cases_get_use_cases",
       "community": 11,
-      "community_name": "use_cases.py",
+      "community_name": "main.py",
       "norm_label": "get_use_cases()"
     },
     {
@@ -726,7 +726,7 @@
       "_origin": "ast",
       "id": "backend_app_schemas",
       "community": 5,
-      "community_name": "schemas.py",
+      "community_name": "evaluate.py",
       "norm_label": "schemas.py"
     },
     {
@@ -737,7 +737,7 @@
       "_origin": "ast",
       "id": "backend_app_schemas_get_utc_now",
       "community": 5,
-      "community_name": "schemas.py",
+      "community_name": "evaluate.py",
       "norm_label": "get_utc_now()"
     },
     {
@@ -748,7 +748,7 @@
       "_origin": "ast",
       "id": "backend_app_schemas_py_datetime",
       "community": 5,
-      "community_name": "schemas.py",
+      "community_name": "evaluate.py",
       "norm_label": "datetime"
     },
     {
@@ -759,7 +759,7 @@
       "_origin": "ast",
       "id": "backend_app_schemas_chatmessage",
       "community": 5,
-      "community_name": "schemas.py",
+      "community_name": "evaluate.py",
       "norm_label": "chatmessage"
     },
     {
@@ -770,7 +770,7 @@
       "_origin": "ast",
       "id": "basemodel",
       "community": 5,
-      "community_name": "schemas.py",
+      "community_name": "evaluate.py",
       "norm_label": "basemodel"
     },
     {
@@ -780,7 +780,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "backend_app_schemas_evaluaterequest",
-      "community": 1,
+      "community": 5,
       "community_name": "evaluate.py",
       "norm_label": "evaluaterequest"
     },
@@ -792,7 +792,7 @@
       "_origin": "ast",
       "id": "backend_app_schemas_scanrequest",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "scanrequest"
     },
     {
@@ -847,73 +847,73 @@
       "_origin": "ast",
       "id": "backend_app_schemas_evaluateresponse",
       "community": 5,
-      "community_name": "schemas.py",
+      "community_name": "evaluate.py",
       "norm_label": "evaluateresponse"
     },
     {
       "label": "ScanResponse",
       "file_type": "code",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L113",
+      "source_location": "L114",
       "_origin": "ast",
       "id": "backend_app_schemas_scanresponse",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "scanresponse"
     },
     {
       "label": "SessionSummary",
       "file_type": "code",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L136",
+      "source_location": "L137",
       "_origin": "ast",
       "id": "backend_app_schemas_sessionsummary",
       "community": 5,
-      "community_name": "schemas.py",
+      "community_name": "evaluate.py",
       "norm_label": "sessionsummary"
     },
     {
       "label": "SessionDetail",
       "file_type": "code",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L143",
+      "source_location": "L144",
       "_origin": "ast",
       "id": "backend_app_schemas_sessiondetail",
       "community": 5,
-      "community_name": "schemas.py",
+      "community_name": "evaluate.py",
       "norm_label": "sessiondetail"
     },
     {
       "label": "ErrorDetail",
       "file_type": "code",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L152",
+      "source_location": "L153",
       "_origin": "ast",
       "id": "backend_app_schemas_errordetail",
       "community": 5,
-      "community_name": "schemas.py",
+      "community_name": "evaluate.py",
       "norm_label": "errordetail"
     },
     {
       "label": "UseCaseInfo",
       "file_type": "code",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L180",
+      "source_location": "L181",
       "_origin": "ast",
       "id": "backend_app_schemas_usecaseinfo",
       "community": 5,
-      "community_name": "schemas.py",
+      "community_name": "evaluate.py",
       "norm_label": "usecaseinfo"
     },
     {
       "label": "AgentInfo",
       "file_type": "code",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L188",
+      "source_location": "L189",
       "_origin": "ast",
       "id": "backend_app_schemas_agentinfo",
       "community": 5,
-      "community_name": "schemas.py",
+      "community_name": "evaluate.py",
       "norm_label": "agentinfo"
     },
     {
@@ -924,7 +924,7 @@
       "_origin": "ast",
       "id": "backend_app_schemas_rationale_6",
       "community": 5,
-      "community_name": "schemas.py",
+      "community_name": "evaluate.py",
       "norm_label": "returns the current timezone-aware utc datetime."
     },
     {
@@ -942,22 +942,22 @@
       "label": "Flat model for the GET /api/use-cases response.",
       "file_type": "rationale",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L181",
+      "source_location": "L182",
       "_origin": "ast",
-      "id": "backend_app_schemas_rationale_181",
+      "id": "backend_app_schemas_rationale_182",
       "community": 5,
-      "community_name": "schemas.py",
+      "community_name": "evaluate.py",
       "norm_label": "flat model for the get /api/use-cases response."
     },
     {
       "label": "Flat model for the GET /api/agents response.",
       "file_type": "rationale",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L189",
+      "source_location": "L190",
       "_origin": "ast",
-      "id": "backend_app_schemas_rationale_189",
+      "id": "backend_app_schemas_rationale_190",
       "community": 5,
-      "community_name": "schemas.py",
+      "community_name": "evaluate.py",
       "norm_label": "flat model for the get /api/agents response."
     },
     {
@@ -967,7 +967,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "backend_app_services_init",
-      "community": 1,
+      "community": 5,
       "community_name": "evaluate.py",
       "norm_label": "services/__init__.py"
     },
@@ -978,8 +978,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "backend_app_services_agent_registry",
-      "community": 5,
-      "community_name": "schemas.py",
+      "community": 11,
+      "community_name": "main.py",
       "norm_label": "agent_registry.py"
     },
     {
@@ -989,7 +989,7 @@
       "source_location": "L270",
       "_origin": "ast",
       "id": "backend_app_services_agent_registry_get_agent",
-      "community": 1,
+      "community": 5,
       "community_name": "evaluate.py",
       "norm_label": "get_agent()"
     },
@@ -1000,8 +1000,8 @@
       "source_location": "L278",
       "_origin": "ast",
       "id": "backend_app_services_agent_registry_list_agents",
-      "community": 5,
-      "community_name": "schemas.py",
+      "community": 11,
+      "community_name": "main.py",
       "norm_label": "list_agents()"
     },
     {
@@ -1011,8 +1011,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "backend_app_services_agent_registry_rationale_1",
-      "community": 5,
-      "community_name": "schemas.py",
+      "community": 11,
+      "community_name": "main.py",
       "norm_label": "static registry of supported llm agents and their prompting best practices...."
     },
     {
@@ -1022,7 +1022,7 @@
       "source_location": "L271",
       "_origin": "ast",
       "id": "backend_app_services_agent_registry_rationale_271",
-      "community": 1,
+      "community": 5,
       "community_name": "evaluate.py",
       "norm_label": "returns the full agent entry for the given id, or none if not found. routes..."
     },
@@ -1033,8 +1033,8 @@
       "source_location": "L279",
       "_origin": "ast",
       "id": "backend_app_services_agent_registry_rationale_279",
-      "community": 5,
-      "community_name": "schemas.py",
+      "community": 11,
+      "community_name": "main.py",
       "norm_label": "returns all agent entries as a list, stripped of internal-only fields. the..."
     },
     {
@@ -1144,7 +1144,7 @@
       "_origin": "ast",
       "id": "backend_app_services_errors",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "errors.py"
     },
     {
@@ -1155,7 +1155,7 @@
       "_origin": "ast",
       "id": "backend_app_services_errors_llmserviceerror",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "llmserviceerror"
     },
     {
@@ -1166,7 +1166,7 @@
       "_origin": "ast",
       "id": "backend_app_services_errors_py_exception",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "exception"
     },
     {
@@ -1177,7 +1177,7 @@
       "_origin": "ast",
       "id": "backend_app_services_errors_llmserviceerror_init",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": ".__init__()"
     },
     {
@@ -1188,7 +1188,7 @@
       "_origin": "ast",
       "id": "backend_app_services_errors_databaseerror",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "databaseerror"
     },
     {
@@ -1199,7 +1199,7 @@
       "_origin": "ast",
       "id": "backend_app_services_errors_databaseerror_init",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": ".__init__()"
     },
     {
@@ -1210,7 +1210,7 @@
       "_origin": "ast",
       "id": "backend_app_services_errors_rationale_2",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "raised when an llm call fails (timeout, bad response, parse error)."
     },
     {
@@ -1221,7 +1221,7 @@
       "_origin": "ast",
       "id": "backend_app_services_errors_rationale_10",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "raised on mongodb timeouts and write failures."
     },
     {
@@ -1232,7 +1232,7 @@
       "_origin": "ast",
       "id": "backend_app_services_llm_service",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "llm_service.py"
     },
     {
@@ -1243,7 +1243,7 @@
       "_origin": "ast",
       "id": "backend_app_services_llm_service_strip_fences",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "_strip_fences()"
     },
     {
@@ -1254,7 +1254,7 @@
       "_origin": "ast",
       "id": "backend_app_services_llm_service_call_engine",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "_call_engine()"
     },
     {
@@ -1265,7 +1265,7 @@
       "_origin": "ast",
       "id": "backend_app_services_llm_service_py_any",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "any"
     },
     {
@@ -1276,29 +1276,40 @@
       "_origin": "ast",
       "id": "backend_app_services_llm_service_generate_scorecard",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "generate_scorecard()"
     },
     {
       "label": "generate_optimized_prompt()",
       "file_type": "code",
       "source_file": "backend/app/services/llm_service.py",
-      "source_location": "L64",
+      "source_location": "L69",
       "_origin": "ast",
       "id": "backend_app_services_llm_service_generate_optimized_prompt",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "generate_optimized_prompt()"
+    },
+    {
+      "label": "execute_prompt()",
+      "file_type": "code",
+      "source_file": "backend/app/services/llm_service.py",
+      "source_location": "L79",
+      "_origin": "ast",
+      "id": "backend_app_services_llm_service_execute_prompt",
+      "community": 1,
+      "community_name": "llm_service.py",
+      "norm_label": "execute_prompt()"
     },
     {
       "label": "run_jailbreak_scan()",
       "file_type": "code",
       "source_file": "backend/app/services/llm_service.py",
-      "source_location": "L74",
+      "source_location": "L100",
       "_origin": "ast",
       "id": "backend_app_services_llm_service_run_jailbreak_scan",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "run_jailbreak_scan()"
     },
     {
@@ -1309,7 +1320,7 @@
       "_origin": "ast",
       "id": "backend_app_services_llm_service_rationale_1",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "this is the boundary between sankar's routes and sreya's pipeline. all route..."
     },
     {
@@ -1320,7 +1331,7 @@
       "_origin": "ast",
       "id": "backend_app_services_llm_service_rationale_16",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "strips markdown code fences (e.g. ```json ... ```) wrapping the content...."
     },
     {
@@ -1331,7 +1342,7 @@
       "_origin": "ast",
       "id": "backend_app_services_llm_service_rationale_27",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "calls the engine function. offloads to a worker thread if the function is..."
     },
     {
@@ -1342,29 +1353,40 @@
       "_origin": "ast",
       "id": "backend_app_services_llm_service_rationale_37",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "adapter wrapper around ai_engine.generate_scorecard. applies dict coercion,..."
     },
     {
       "label": "Adapter wrapper around ai_engine.generate_optimized_prompt. Applies sync-\u2026",
       "file_type": "rationale",
       "source_file": "backend/app/services/llm_service.py",
-      "source_location": "L65",
+      "source_location": "L70",
       "_origin": "ast",
-      "id": "backend_app_services_llm_service_rationale_65",
+      "id": "backend_app_services_llm_service_rationale_70",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "adapter wrapper around ai_engine.generate_optimized_prompt. applies sync-..."
+    },
+    {
+      "label": "Executes the optimized prompt against the LLM to generate the agent response.",
+      "file_type": "rationale",
+      "source_file": "backend/app/services/llm_service.py",
+      "source_location": "L80",
+      "_origin": "ast",
+      "id": "backend_app_services_llm_service_rationale_80",
+      "community": 1,
+      "community_name": "llm_service.py",
+      "norm_label": "executes the optimized prompt against the llm to generate the agent response."
     },
     {
       "label": "Adapter wrapper around ai_engine.run_jailbreak_scan. Applies dict coercion,\u2026",
       "file_type": "rationale",
       "source_file": "backend/app/services/llm_service.py",
-      "source_location": "L75",
+      "source_location": "L101",
       "_origin": "ast",
-      "id": "backend_app_services_llm_service_rationale_75",
+      "id": "backend_app_services_llm_service_rationale_101",
       "community": 1,
-      "community_name": "evaluate.py",
+      "community_name": "llm_service.py",
       "norm_label": "adapter wrapper around ai_engine.run_jailbreak_scan. applies dict coercion,..."
     },
     {
@@ -1375,7 +1397,7 @@
       "_origin": "ast",
       "id": "backend_app_services_use_case_registry",
       "community": 11,
-      "community_name": "use_cases.py",
+      "community_name": "main.py",
       "norm_label": "use_case_registry.py"
     },
     {
@@ -1385,7 +1407,7 @@
       "source_location": "L294",
       "_origin": "ast",
       "id": "backend_app_services_use_case_registry_get_use_case",
-      "community": 1,
+      "community": 5,
       "community_name": "evaluate.py",
       "norm_label": "get_use_case()"
     },
@@ -1397,7 +1419,7 @@
       "_origin": "ast",
       "id": "backend_app_services_use_case_registry_list_use_cases",
       "community": 11,
-      "community_name": "use_cases.py",
+      "community_name": "main.py",
       "norm_label": "list_use_cases()"
     },
     {
@@ -1408,7 +1430,7 @@
       "_origin": "ast",
       "id": "backend_app_services_use_case_registry_rationale_1",
       "community": 11,
-      "community_name": "use_cases.py",
+      "community_name": "main.py",
       "norm_label": "static registry of use-case definitions for evalio. each entry defines the..."
     },
     {
@@ -1418,7 +1440,7 @@
       "source_location": "L295",
       "_origin": "ast",
       "id": "backend_app_services_use_case_registry_rationale_295",
-      "community": 1,
+      "community": 5,
       "community_name": "evaluate.py",
       "norm_label": "returns the full use-case entry for the given id, or none if not found. routes..."
     },
@@ -1430,7 +1452,7 @@
       "_origin": "ast",
       "id": "backend_app_services_use_case_registry_rationale_303",
       "community": 11,
-      "community_name": "use_cases.py",
+      "community_name": "main.py",
       "norm_label": "returns all use-case entries as a list, stripped of internal-only fields. the..."
     },
     {
@@ -1441,7 +1463,7 @@
       "_origin": "ast",
       "id": "backend_scripts_seed_golden_path",
       "community": 4,
-      "community_name": "main.py",
+      "community_name": "ProjectSession",
       "norm_label": "seed_golden_path.py"
     },
     {
@@ -1452,7 +1474,7 @@
       "_origin": "ast",
       "id": "backend_scripts_seed_golden_path_main",
       "community": 4,
-      "community_name": "main.py",
+      "community_name": "ProjectSession",
       "norm_label": "main()"
     },
     {
@@ -1485,7 +1507,7 @@
       "_origin": "ast",
       "id": "frontend_oxlintrc",
       "community": 12,
-      "community_name": ".oxlintrc.json",
+      "community_name": "Landing.jsx",
       "norm_label": ".oxlintrc.json"
     },
     {
@@ -1496,7 +1518,7 @@
       "_origin": "ast",
       "id": "frontend_oxlintrc_schema",
       "community": 12,
-      "community_name": ".oxlintrc.json",
+      "community_name": "Landing.jsx",
       "norm_label": "$schema"
     },
     {
@@ -1506,8 +1528,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "frontend_oxlintrc_plugins",
-      "community": 0,
-      "community_name": "Dashboard.jsx",
+      "community": 12,
+      "community_name": "Landing.jsx",
       "norm_label": "plugins"
     },
     {
@@ -1517,8 +1539,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "ref_react",
-      "community": 0,
-      "community_name": "Dashboard.jsx",
+      "community": 12,
+      "community_name": "Landing.jsx",
       "norm_label": "react"
     },
     {
@@ -1528,8 +1550,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "ref_oxc",
-      "community": 0,
-      "community_name": "Dashboard.jsx",
+      "community": 12,
+      "community_name": "Landing.jsx",
       "norm_label": "oxc"
     },
     {
@@ -1540,7 +1562,7 @@
       "_origin": "ast",
       "id": "frontend_oxlintrc_rules",
       "community": 12,
-      "community_name": ".oxlintrc.json",
+      "community_name": "Landing.jsx",
       "norm_label": "rules"
     },
     {
@@ -1551,7 +1573,7 @@
       "_origin": "ast",
       "id": "frontend_oxlintrc_rules_react_rules_of_hooks",
       "community": 12,
-      "community_name": ".oxlintrc.json",
+      "community_name": "Landing.jsx",
       "norm_label": "react/rules-of-hooks"
     },
     {
@@ -1562,7 +1584,7 @@
       "_origin": "ast",
       "id": "frontend_oxlintrc_rules_react_only_export_components",
       "community": 12,
-      "community_name": ".oxlintrc.json",
+      "community_name": "Landing.jsx",
       "norm_label": "react/only-export-components"
     },
     {
@@ -1573,7 +1595,7 @@
       "_origin": "ast",
       "id": "ref_warn",
       "community": 12,
-      "community_name": ".oxlintrc.json",
+      "community_name": "Landing.jsx",
       "norm_label": "warn"
     },
     {
@@ -2045,19 +2067,19 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "frontend_src_app",
-      "community": 0,
-      "community_name": "Dashboard.jsx",
+      "community": 12,
+      "community_name": "Landing.jsx",
       "norm_label": "app.jsx"
     },
     {
       "label": "App()",
       "file_type": "code",
       "source_file": "frontend/src/App.jsx",
-      "source_location": "L3",
+      "source_location": "L7",
       "_origin": "ast",
       "id": "frontend_src_app_app",
-      "community": 0,
-      "community_name": "Dashboard.jsx",
+      "community": 12,
+      "community_name": "Landing.jsx",
       "norm_label": "app()"
     },
     {
@@ -2097,7 +2119,7 @@
       "label": "DEFAULT_USE_CASES",
       "file_type": "code",
       "source_file": "frontend/src/components/ContextBar/ContextBar.jsx",
-      "source_location": "L3",
+      "source_location": "L1",
       "_origin": "ast",
       "id": "frontend_src_components_contextbar_contextbar_default_use_cases",
       "community": 0,
@@ -2108,7 +2130,7 @@
       "label": "DEFAULT_AGENTS",
       "file_type": "code",
       "source_file": "frontend/src/components/ContextBar/ContextBar.jsx",
-      "source_location": "L14",
+      "source_location": "L12",
       "_origin": "ast",
       "id": "frontend_src_components_contextbar_contextbar_default_agents",
       "community": 0,
@@ -2119,7 +2141,7 @@
       "label": "normalizeOptions()",
       "file_type": "code",
       "source_file": "frontend/src/components/ContextBar/ContextBar.jsx",
-      "source_location": "L23",
+      "source_location": "L21",
       "_origin": "ast",
       "id": "frontend_src_components_contextbar_contextbar_normalizeoptions",
       "community": 0,
@@ -2127,10 +2149,21 @@
       "norm_label": "normalizeoptions()"
     },
     {
-      "label": "ContextBar()",
+      "label": "PillRow()",
       "file_type": "code",
       "source_file": "frontend/src/components/ContextBar/ContextBar.jsx",
       "source_location": "L52",
+      "_origin": "ast",
+      "id": "frontend_src_components_contextbar_contextbar_pillrow",
+      "community": 0,
+      "community_name": "Dashboard.jsx",
+      "norm_label": "pillrow()"
+    },
+    {
+      "label": "ContextBar()",
+      "file_type": "code",
+      "source_file": "frontend/src/components/ContextBar/ContextBar.jsx",
+      "source_location": "L89",
       "_origin": "ast",
       "id": "frontend_src_components_contextbar_contextbar_contextbar",
       "community": 0,
@@ -2144,8 +2177,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "frontend_src_components_loader_loader",
-      "community": 0,
-      "community_name": "Dashboard.jsx",
+      "community": 24,
+      "community_name": "Loader.jsx",
       "norm_label": "loader.jsx"
     },
     {
@@ -2155,8 +2188,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "frontend_src_components_loader_loader_loader",
-      "community": 0,
-      "community_name": "Dashboard.jsx",
+      "community": 24,
+      "community_name": "Loader.jsx",
       "norm_label": "loader()"
     },
     {
@@ -2193,54 +2226,43 @@
       "norm_label": "outputpanel.jsx"
     },
     {
-      "label": "normalizeAgentLabel()",
+      "label": "TABS",
       "file_type": "code",
       "source_file": "frontend/src/components/OutputPanel/OutputPanel.jsx",
       "source_location": "L4",
       "_origin": "ast",
-      "id": "frontend_src_components_outputpanel_outputpanel_normalizeagentlabel",
+      "id": "frontend_src_components_outputpanel_outputpanel_tabs",
       "community": 0,
       "community_name": "Dashboard.jsx",
-      "norm_label": "normalizeagentlabel()"
+      "norm_label": "tabs"
     },
     {
-      "label": "renderInlineMarkdown()",
+      "label": "metricBars",
+      "file_type": "code",
+      "source_file": "frontend/src/components/OutputPanel/OutputPanel.jsx",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "frontend_src_components_outputpanel_outputpanel_metricbars",
+      "community": 0,
+      "community_name": "Dashboard.jsx",
+      "norm_label": "metricbars"
+    },
+    {
+      "label": "ScoreRing()",
       "file_type": "code",
       "source_file": "frontend/src/components/OutputPanel/OutputPanel.jsx",
       "source_location": "L12",
       "_origin": "ast",
-      "id": "frontend_src_components_outputpanel_outputpanel_renderinlinemarkdown",
+      "id": "frontend_src_components_outputpanel_outputpanel_scorering",
       "community": 0,
       "community_name": "Dashboard.jsx",
-      "norm_label": "renderinlinemarkdown()"
-    },
-    {
-      "label": "renderResponseContent()",
-      "file_type": "code",
-      "source_file": "frontend/src/components/OutputPanel/OutputPanel.jsx",
-      "source_location": "L53",
-      "_origin": "ast",
-      "id": "frontend_src_components_outputpanel_outputpanel_renderresponsecontent",
-      "community": 0,
-      "community_name": "Dashboard.jsx",
-      "norm_label": "renderresponsecontent()"
-    },
-    {
-      "label": "panelContent",
-      "file_type": "code",
-      "source_file": "frontend/src/components/OutputPanel/OutputPanel.jsx",
-      "source_location": "L180",
-      "_origin": "ast",
-      "id": "frontend_src_components_outputpanel_outputpanel_panelcontent",
-      "community": 0,
-      "community_name": "Dashboard.jsx",
-      "norm_label": "panelcontent"
+      "norm_label": "scorering()"
     },
     {
       "label": "OutputPanel()",
       "file_type": "code",
       "source_file": "frontend/src/components/OutputPanel/OutputPanel.jsx",
-      "source_location": "L218",
+      "source_location": "L45",
       "_origin": "ast",
       "id": "frontend_src_components_outputpanel_outputpanel_outputpanel",
       "community": 0,
@@ -2259,21 +2281,21 @@
       "norm_label": "prompteditor.jsx"
     },
     {
-      "label": "actions",
+      "label": "editorExtensions",
       "file_type": "code",
       "source_file": "frontend/src/components/PromptEditor/PromptEditor.jsx",
-      "source_location": "L11",
+      "source_location": "L7",
       "_origin": "ast",
-      "id": "frontend_src_components_prompteditor_prompteditor_actions",
+      "id": "frontend_src_components_prompteditor_prompteditor_editorextensions",
       "community": 0,
       "community_name": "Dashboard.jsx",
-      "norm_label": "actions"
+      "norm_label": "editorextensions"
     },
     {
       "label": "templates",
       "file_type": "code",
       "source_file": "frontend/src/components/PromptEditor/PromptEditor.jsx",
-      "source_location": "L17",
+      "source_location": "L9",
       "_origin": "ast",
       "id": "frontend_src_components_prompteditor_prompteditor_templates",
       "community": 0,
@@ -2281,10 +2303,21 @@
       "norm_label": "templates"
     },
     {
+      "label": "highlightXml()",
+      "file_type": "code",
+      "source_file": "frontend/src/components/PromptEditor/PromptEditor.jsx",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "frontend_src_components_prompteditor_prompteditor_highlightxml",
+      "community": 0,
+      "community_name": "Dashboard.jsx",
+      "norm_label": "highlightxml()"
+    },
+    {
       "label": "PromptEditor()",
       "file_type": "code",
       "source_file": "frontend/src/components/PromptEditor/PromptEditor.jsx",
-      "source_location": "L25",
+      "source_location": "L35",
       "_origin": "ast",
       "id": "frontend_src_components_prompteditor_prompteditor_prompteditor",
       "community": 0,
@@ -2298,8 +2331,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "frontend_src_components_scorecard_scorecard",
-      "community": 0,
-      "community_name": "Dashboard.jsx",
+      "community": 12,
+      "community_name": "Landing.jsx",
       "norm_label": "scorecard.jsx"
     },
     {
@@ -2309,8 +2342,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "frontend_src_components_scorecard_scorecard_scoreconfig",
-      "community": 0,
-      "community_name": "Dashboard.jsx",
+      "community": 12,
+      "community_name": "Landing.jsx",
       "norm_label": "scoreconfig"
     },
     {
@@ -2320,8 +2353,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "frontend_src_components_scorecard_scorecard_scorecard",
-      "community": 0,
-      "community_name": "Dashboard.jsx",
+      "community": 12,
+      "community_name": "Landing.jsx",
       "norm_label": "scorecard()"
     },
     {
@@ -2339,12 +2372,34 @@
       "label": "Sidebar()",
       "file_type": "code",
       "source_file": "frontend/src/components/Sidebar/Sidebar.jsx",
-      "source_location": "L14",
+      "source_location": "L5",
       "_origin": "ast",
       "id": "frontend_src_components_sidebar_sidebar_sidebar",
       "community": 0,
       "community_name": "Dashboard.jsx",
       "norm_label": "sidebar()"
+    },
+    {
+      "label": "StatusBar.jsx",
+      "file_type": "code",
+      "source_file": "frontend/src/components/StatusBar/StatusBar.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_src_components_statusbar_statusbar",
+      "community": 23,
+      "community_name": "StatusBar.jsx",
+      "norm_label": "statusbar.jsx"
+    },
+    {
+      "label": "StatusBar()",
+      "file_type": "code",
+      "source_file": "frontend/src/components/StatusBar/StatusBar.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_src_components_statusbar_statusbar_statusbar",
+      "community": 23,
+      "community_name": "StatusBar.jsx",
+      "norm_label": "statusbar()"
     },
     {
       "label": "main.jsx",
@@ -2353,8 +2408,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "frontend_src_main",
-      "community": 0,
-      "community_name": "Dashboard.jsx",
+      "community": 12,
+      "community_name": "Landing.jsx",
       "norm_label": "main.jsx"
     },
     {
@@ -2372,7 +2427,7 @@
       "label": "demoEvaluation",
       "file_type": "code",
       "source_file": "frontend/src/pages/Dashboard.jsx",
-      "source_location": "L16",
+      "source_location": "L17",
       "_origin": "ast",
       "id": "frontend_src_pages_dashboard_demoevaluation",
       "community": 0,
@@ -2380,26 +2435,169 @@
       "norm_label": "demoevaluation"
     },
     {
-      "label": "readPromptHistory()",
-      "file_type": "code",
-      "source_file": "frontend/src/pages/Dashboard.jsx",
-      "source_location": "L30",
-      "_origin": "ast",
-      "id": "frontend_src_pages_dashboard_readprompthistory",
-      "community": 0,
-      "community_name": "Dashboard.jsx",
-      "norm_label": "readprompthistory()"
-    },
-    {
       "label": "Dashboard()",
       "file_type": "code",
       "source_file": "frontend/src/pages/Dashboard.jsx",
-      "source_location": "L43",
+      "source_location": "L33",
       "_origin": "ast",
       "id": "frontend_src_pages_dashboard_dashboard",
       "community": 0,
       "community_name": "Dashboard.jsx",
       "norm_label": "dashboard()"
+    },
+    {
+      "label": "Landing.jsx",
+      "file_type": "code",
+      "source_file": "frontend/src/pages/Landing.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_src_pages_landing",
+      "community": 12,
+      "community_name": "Landing.jsx",
+      "norm_label": "landing.jsx"
+    },
+    {
+      "label": "colors",
+      "file_type": "code",
+      "source_file": "frontend/src/pages/Landing.jsx",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "frontend_src_pages_landing_colors",
+      "community": 12,
+      "community_name": "Landing.jsx",
+      "norm_label": "colors"
+    },
+    {
+      "label": "USE_CASES",
+      "file_type": "code",
+      "source_file": "frontend/src/pages/Landing.jsx",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "frontend_src_pages_landing_use_cases",
+      "community": 12,
+      "community_name": "Landing.jsx",
+      "norm_label": "use_cases"
+    },
+    {
+      "label": "MODELS",
+      "file_type": "code",
+      "source_file": "frontend/src/pages/Landing.jsx",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "frontend_src_pages_landing_models",
+      "community": 12,
+      "community_name": "Landing.jsx",
+      "norm_label": "models"
+    },
+    {
+      "label": "FEATURES",
+      "file_type": "code",
+      "source_file": "frontend/src/pages/Landing.jsx",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "frontend_src_pages_landing_features",
+      "community": 12,
+      "community_name": "Landing.jsx",
+      "norm_label": "features"
+    },
+    {
+      "label": "IconBolt()",
+      "file_type": "code",
+      "source_file": "frontend/src/pages/Landing.jsx",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "frontend_src_pages_landing_iconbolt",
+      "community": 12,
+      "community_name": "Landing.jsx",
+      "norm_label": "iconbolt()"
+    },
+    {
+      "label": "IconArrow()",
+      "file_type": "code",
+      "source_file": "frontend/src/pages/Landing.jsx",
+      "source_location": "L58",
+      "_origin": "ast",
+      "id": "frontend_src_pages_landing_iconarrow",
+      "community": 12,
+      "community_name": "Landing.jsx",
+      "norm_label": "iconarrow()"
+    },
+    {
+      "label": "Landing()",
+      "file_type": "code",
+      "source_file": "frontend/src/pages/Landing.jsx",
+      "source_location": "L66",
+      "_origin": "ast",
+      "id": "frontend_src_pages_landing_landing",
+      "community": 12,
+      "community_name": "Landing.jsx",
+      "norm_label": "landing()"
+    },
+    {
+      "label": "styles",
+      "file_type": "code",
+      "source_file": "frontend/src/pages/Landing.jsx",
+      "source_location": "L183",
+      "_origin": "ast",
+      "id": "frontend_src_pages_landing_styles",
+      "community": 12,
+      "community_name": "Landing.jsx",
+      "norm_label": "styles"
+    },
+    {
+      "label": "Login.jsx",
+      "file_type": "code",
+      "source_file": "frontend/src/pages/Login.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_src_pages_login",
+      "community": 12,
+      "community_name": "Landing.jsx",
+      "norm_label": "login.jsx"
+    },
+    {
+      "label": "attachWorkspaceInterceptor()",
+      "file_type": "code",
+      "source_file": "frontend/src/pages/Login.jsx",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "frontend_src_pages_login_attachworkspaceinterceptor",
+      "community": 12,
+      "community_name": "Landing.jsx",
+      "norm_label": "attachworkspaceinterceptor()"
+    },
+    {
+      "label": "Login()",
+      "file_type": "code",
+      "source_file": "frontend/src/pages/Login.jsx",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "frontend_src_pages_login_login",
+      "community": 12,
+      "community_name": "Landing.jsx",
+      "norm_label": "login()"
+    },
+    {
+      "label": "colors",
+      "file_type": "code",
+      "source_file": "frontend/src/pages/Login.jsx",
+      "source_location": "L142",
+      "_origin": "ast",
+      "id": "frontend_src_pages_login_colors",
+      "community": 12,
+      "community_name": "Landing.jsx",
+      "norm_label": "colors"
+    },
+    {
+      "label": "styles",
+      "file_type": "code",
+      "source_file": "frontend/src/pages/Login.jsx",
+      "source_location": "L153",
+      "_origin": "ast",
+      "id": "frontend_src_pages_login_styles",
+      "community": 12,
+      "community_name": "Landing.jsx",
+      "norm_label": "styles"
     },
     {
       "label": "api.js",
@@ -2521,6 +2719,50 @@
       "community": 0,
       "community_name": "Dashboard.jsx",
       "norm_label": "scanprompt()"
+    },
+    {
+      "label": "session.js",
+      "file_type": "code",
+      "source_file": "frontend/src/services/session.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_src_services_session",
+      "community": 0,
+      "community_name": "Dashboard.jsx",
+      "norm_label": "session.js"
+    },
+    {
+      "label": "listSessions()",
+      "file_type": "code",
+      "source_file": "frontend/src/services/session.js",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "frontend_src_services_session_listsessions",
+      "community": 0,
+      "community_name": "Dashboard.jsx",
+      "norm_label": "listsessions()"
+    },
+    {
+      "label": "getSessionDetail()",
+      "file_type": "code",
+      "source_file": "frontend/src/services/session.js",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "frontend_src_services_session_getsessiondetail",
+      "community": 0,
+      "community_name": "Dashboard.jsx",
+      "norm_label": "getsessiondetail()"
+    },
+    {
+      "label": "deleteSession()",
+      "file_type": "code",
+      "source_file": "frontend/src/services/session.js",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "frontend_src_services_session_deletesession",
+      "community": 0,
+      "community_name": "Dashboard.jsx",
+      "norm_label": "deletesession()"
     },
     {
       "label": "vite.config.js",
@@ -2760,8 +3002,8 @@
       "source_location": "L304",
       "_origin": "ast",
       "id": "evalio_backend_execution_playbook_v2_0_2026_07_31_2_phase_1_architecture_lock_hours_0_3",
-      "community": 9,
-      "community_name": "2. Phase 1 \u2014 Architecture Lock (Hours 0\u20133)",
+      "community": 3,
+      "community_name": "Evalio \u2014 Backend Execution Playbook (Sankar + Coding Agent)",
       "norm_label": "2. phase 1 \u2014 architecture lock (hours 0\u20133)"
     },
     {
@@ -2771,8 +3013,8 @@
       "source_location": "L308",
       "_origin": "ast",
       "id": "evalio_backend_execution_playbook_v2_0_2026_07_31_2_1_agent_build_app_core_config_py",
-      "community": 9,
-      "community_name": "2. Phase 1 \u2014 Architecture Lock (Hours 0\u20133)",
+      "community": 3,
+      "community_name": "Evalio \u2014 Backend Execution Playbook (Sankar + Coding Agent)",
       "norm_label": "2.1 `[agent]` build `app/core/config.py`"
     },
     {
@@ -2782,8 +3024,8 @@
       "source_location": "L335",
       "_origin": "ast",
       "id": "evalio_backend_execution_playbook_v2_0_2026_07_31_2_2_agent_build_app_models_py_beanie_documents",
-      "community": 9,
-      "community_name": "2. Phase 1 \u2014 Architecture Lock (Hours 0\u20133)",
+      "community": 3,
+      "community_name": "Evalio \u2014 Backend Execution Playbook (Sankar + Coding Agent)",
       "norm_label": "2.2 `[agent]` build `app/models.py` \u2014 beanie documents"
     },
     {
@@ -2793,8 +3035,8 @@
       "source_location": "L372",
       "_origin": "ast",
       "id": "evalio_backend_execution_playbook_v2_0_2026_07_31_2_3_agent_build_app_schemas_py_pydantic_v2_contracts",
-      "community": 9,
-      "community_name": "2. Phase 1 \u2014 Architecture Lock (Hours 0\u20133)",
+      "community": 3,
+      "community_name": "Evalio \u2014 Backend Execution Playbook (Sankar + Coding Agent)",
       "norm_label": "2.3 `[agent]` build `app/schemas.py` \u2014 pydantic v2 contracts"
     },
     {
@@ -2804,8 +3046,8 @@
       "source_location": "L463",
       "_origin": "ast",
       "id": "evalio_backend_execution_playbook_v2_0_2026_07_31_2_4_agent_build_app_database_py_beanie_init",
-      "community": 9,
-      "community_name": "2. Phase 1 \u2014 Architecture Lock (Hours 0\u20133)",
+      "community": 3,
+      "community_name": "Evalio \u2014 Backend Execution Playbook (Sankar + Coding Agent)",
       "norm_label": "2.4 `[agent]` build `app/database.py` \u2014 beanie init"
     },
     {
@@ -2815,8 +3057,8 @@
       "source_location": "L479",
       "_origin": "ast",
       "id": "evalio_backend_execution_playbook_v2_0_2026_07_31_2_5_agent_build_app_dependencies_py_header_extraction",
-      "community": 9,
-      "community_name": "2. Phase 1 \u2014 Architecture Lock (Hours 0\u20133)",
+      "community": 3,
+      "community_name": "Evalio \u2014 Backend Execution Playbook (Sankar + Coding Agent)",
       "norm_label": "2.5 `[agent]` build `app/dependencies.py` \u2014 header extraction"
     },
     {
@@ -2826,8 +3068,8 @@
       "source_location": "L495",
       "_origin": "ast",
       "id": "evalio_backend_execution_playbook_v2_0_2026_07_31_2_6_agent_build_app_main_py_minimal_bootable_server",
-      "community": 9,
-      "community_name": "2. Phase 1 \u2014 Architecture Lock (Hours 0\u20133)",
+      "community": 3,
+      "community_name": "Evalio \u2014 Backend Execution Playbook (Sankar + Coding Agent)",
       "norm_label": "2.6 `[agent]` build `app/main.py` \u2014 minimal bootable server"
     },
     {
@@ -2837,8 +3079,8 @@
       "source_location": "L512",
       "_origin": "ast",
       "id": "evalio_backend_execution_playbook_v2_0_2026_07_31_2_7_sankar_run_the_smoke_test",
-      "community": 9,
-      "community_name": "2. Phase 1 \u2014 Architecture Lock (Hours 0\u20133)",
+      "community": 3,
+      "community_name": "Evalio \u2014 Backend Execution Playbook (Sankar + Coding Agent)",
       "norm_label": "2.7 `[sankar]` run the smoke test"
     },
     {
@@ -2848,8 +3090,8 @@
       "source_location": "L521",
       "_origin": "ast",
       "id": "evalio_backend_execution_playbook_v2_0_2026_07_31_2_8_hand_off_phase_1_artifacts_to_distribute",
-      "community": 9,
-      "community_name": "2. Phase 1 \u2014 Architecture Lock (Hours 0\u20133)",
+      "community": 3,
+      "community_name": "Evalio \u2014 Backend Execution Playbook (Sankar + Coding Agent)",
       "norm_label": "2.8 `[hand-off]` phase 1 artifacts to distribute"
     },
     {
@@ -2859,8 +3101,8 @@
       "source_location": "L564",
       "_origin": "ast",
       "id": "evalio_backend_execution_playbook_v2_0_2026_07_31_3_phase_2_core_engineering_hours_3_8",
-      "community": 3,
-      "community_name": "Evalio \u2014 Backend Execution Playbook (Sankar + Coding Agent)",
+      "community": 9,
+      "community_name": "3. Phase 2 \u2014 Core Engineering (Hours 3\u20138)",
       "norm_label": "3. phase 2 \u2014 core engineering (hours 3\u20138)"
     },
     {
@@ -2870,8 +3112,8 @@
       "source_location": "L568",
       "_origin": "ast",
       "id": "evalio_backend_execution_playbook_v2_0_2026_07_31_3_1_agent_build_app_services_ai_engine_py_sreya_s_file_mock_version_only",
-      "community": 3,
-      "community_name": "Evalio \u2014 Backend Execution Playbook (Sankar + Coding Agent)",
+      "community": 9,
+      "community_name": "3. Phase 2 \u2014 Core Engineering (Hours 3\u20138)",
       "norm_label": "3.1 `[agent]` build `app/services/ai_engine.py` \u2014 sreya's file (mock version only)"
     },
     {
@@ -2881,8 +3123,8 @@
       "source_location": "L600",
       "_origin": "ast",
       "id": "evalio_backend_execution_playbook_v2_0_2026_07_31_3_2_agent_build_app_services_llm_service_py_the_adapter_sankar_s_file",
-      "community": 3,
-      "community_name": "Evalio \u2014 Backend Execution Playbook (Sankar + Coding Agent)",
+      "community": 9,
+      "community_name": "3. Phase 2 \u2014 Core Engineering (Hours 3\u20138)",
       "norm_label": "3.2 `[agent]` build `app/services/llm_service.py` \u2014 the adapter (sankar's file)"
     },
     {
@@ -2892,8 +3134,8 @@
       "source_location": "L618",
       "_origin": "ast",
       "id": "evalio_backend_execution_playbook_v2_0_2026_07_31_3_3_agent_build_app_services_errors_py_typed_exceptions",
-      "community": 3,
-      "community_name": "Evalio \u2014 Backend Execution Playbook (Sankar + Coding Agent)",
+      "community": 9,
+      "community_name": "3. Phase 2 \u2014 Core Engineering (Hours 3\u20138)",
       "norm_label": "3.3 `[agent]` build `app/services/errors.py` \u2014 typed exceptions"
     },
     {
@@ -2903,8 +3145,8 @@
       "source_location": "L632",
       "_origin": "ast",
       "id": "evalio_backend_execution_playbook_v2_0_2026_07_31_3_4_agent_build_app_routes_evaluate_py_the_core_endpoint",
-      "community": 3,
-      "community_name": "Evalio \u2014 Backend Execution Playbook (Sankar + Coding Agent)",
+      "community": 9,
+      "community_name": "3. Phase 2 \u2014 Core Engineering (Hours 3\u20138)",
       "norm_label": "3.4 `[agent]` build `app/routes/evaluate.py` \u2014 the core endpoint"
     },
     {
@@ -2914,8 +3156,8 @@
       "source_location": "L668",
       "_origin": "ast",
       "id": "evalio_backend_execution_playbook_v2_0_2026_07_31_3_5_agent_build_placeholder_app_routes_scan_py_and_app_routes_session_py",
-      "community": 3,
-      "community_name": "Evalio \u2014 Backend Execution Playbook (Sankar + Coding Agent)",
+      "community": 9,
+      "community_name": "3. Phase 2 \u2014 Core Engineering (Hours 3\u20138)",
       "norm_label": "3.5 `[agent]` build placeholder `app/routes/scan.py` and `app/routes/session.py`"
     },
     {
@@ -2925,8 +3167,8 @@
       "source_location": "L680",
       "_origin": "ast",
       "id": "evalio_backend_execution_playbook_v2_0_2026_07_31_3_6_sankar_boot_and_test_api_evaluate_end_to_end",
-      "community": 3,
-      "community_name": "Evalio \u2014 Backend Execution Playbook (Sankar + Coding Agent)",
+      "community": 9,
+      "community_name": "3. Phase 2 \u2014 Core Engineering (Hours 3\u20138)",
       "norm_label": "3.6 `[sankar]` boot and test `/api/evaluate` end-to-end"
     },
     {
@@ -2936,8 +3178,8 @@
       "source_location": "L695",
       "_origin": "ast",
       "id": "evalio_backend_execution_playbook_v2_0_2026_07_31_3_7_hand_off_phase_2_artifacts",
-      "community": 3,
-      "community_name": "Evalio \u2014 Backend Execution Playbook (Sankar + Coding Agent)",
+      "community": 9,
+      "community_name": "3. Phase 2 \u2014 Core Engineering (Hours 3\u20138)",
       "norm_label": "3.7 `[hand-off]` phase 2 artifacts"
     },
     {
@@ -4511,7 +4753,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/routes/evaluate.py",
-      "source_location": "L149",
+      "source_location": "L152",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_routes_evaluate_evaluate_prompt",
@@ -4661,7 +4903,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/models.py",
-      "source_location": "L46",
+      "source_location": "L47",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_models_scanresult",
@@ -5005,7 +5247,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/app/routes/evaluate.py",
-      "source_location": "L172",
+      "source_location": "L176",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_routes_evaluate_evaluate_prompt",
@@ -5046,6 +5288,18 @@
       "_origin": "ast",
       "source": "backend_app_routes_evaluate_evaluate_prompt",
       "target": "backend_app_services_agent_registry_get_agent"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/app/routes/evaluate.py",
+      "source_location": "L119",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "backend_app_routes_evaluate_evaluate_prompt",
+      "target": "backend_app_services_llm_service_execute_prompt"
     },
     {
       "relation": "calls",
@@ -5521,7 +5775,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L188",
+      "source_location": "L189",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_schemas",
@@ -5543,7 +5797,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L152",
+      "source_location": "L153",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_schemas",
@@ -5610,7 +5864,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L113",
+      "source_location": "L114",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_schemas",
@@ -5632,7 +5886,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L143",
+      "source_location": "L144",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_schemas",
@@ -5643,7 +5897,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L136",
+      "source_location": "L137",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_schemas",
@@ -5654,7 +5908,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L180",
+      "source_location": "L181",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_schemas",
@@ -5723,7 +5977,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L188",
+      "source_location": "L189",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_schemas_agentinfo",
@@ -5734,7 +5988,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L152",
+      "source_location": "L153",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_schemas_errordetail",
@@ -5778,7 +6032,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L113",
+      "source_location": "L114",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_schemas_scanresponse",
@@ -5800,7 +6054,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L136",
+      "source_location": "L137",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_schemas_sessionsummary",
@@ -5811,7 +6065,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L180",
+      "source_location": "L181",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_schemas_usecaseinfo",
@@ -5953,7 +6207,7 @@
       "context": "return_type",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/services/llm_service.py",
-      "source_location": "L74",
+      "source_location": "L100",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_services_llm_service_run_jailbreak_scan",
@@ -5964,7 +6218,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L143",
+      "source_location": "L144",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_schemas_sessiondetail",
@@ -5975,10 +6229,10 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L181",
+      "source_location": "L182",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "backend_app_schemas_rationale_181",
+      "source": "backend_app_schemas_rationale_182",
       "target": "backend_app_schemas_usecaseinfo",
       "confidence_score": 1.0
     },
@@ -5986,10 +6240,10 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/schemas.py",
-      "source_location": "L189",
+      "source_location": "L190",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "backend_app_schemas_rationale_189",
+      "source": "backend_app_schemas_rationale_190",
       "target": "backend_app_schemas_agentinfo",
       "confidence_score": 1.0
     },
@@ -6389,7 +6643,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/services/llm_service.py",
-      "source_location": "L49",
+      "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_services_llm_service_generate_scorecard",
@@ -6401,7 +6655,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/services/llm_service.py",
-      "source_location": "L87",
+      "source_location": "L118",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_services_llm_service_run_jailbreak_scan",
@@ -6468,7 +6722,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/services/llm_service.py",
-      "source_location": "L64",
+      "source_location": "L79",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "backend_app_services_llm_service",
+      "target": "backend_app_services_llm_service_execute_prompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/app/services/llm_service.py",
+      "source_location": "L69",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_services_llm_service",
@@ -6490,7 +6755,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/services/llm_service.py",
-      "source_location": "L74",
+      "source_location": "L100",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_services_llm_service",
@@ -6524,7 +6789,19 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/services/llm_service.py",
-      "source_location": "L71",
+      "source_location": "L97",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "backend_app_services_llm_service_execute_prompt",
+      "target": "backend_app_services_llm_service_strip_fences",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/app/services/llm_service.py",
+      "source_location": "L76",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_services_llm_service_generate_optimized_prompt",
@@ -6536,7 +6813,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/services/llm_service.py",
-      "source_location": "L45",
+      "source_location": "L50",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_services_llm_service_generate_scorecard",
@@ -6559,7 +6836,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/services/llm_service.py",
-      "source_location": "L83",
+      "source_location": "L114",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_services_llm_service_run_jailbreak_scan",
@@ -6583,7 +6860,19 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/services/llm_service.py",
-      "source_location": "L69",
+      "source_location": "L95",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "backend_app_services_llm_service_execute_prompt",
+      "target": "backend_app_services_llm_service_call_engine",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/app/services/llm_service.py",
+      "source_location": "L74",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_services_llm_service_generate_optimized_prompt",
@@ -6595,7 +6884,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/services/llm_service.py",
-      "source_location": "L41",
+      "source_location": "L46",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_services_llm_service_generate_scorecard",
@@ -6618,7 +6907,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/services/llm_service.py",
-      "source_location": "L79",
+      "source_location": "L110",
       "weight": 1.0,
       "_origin": "ast",
       "source": "backend_app_services_llm_service_run_jailbreak_scan",
@@ -6640,10 +6929,10 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/services/llm_service.py",
-      "source_location": "L65",
+      "source_location": "L70",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "backend_app_services_llm_service_rationale_65",
+      "source": "backend_app_services_llm_service_rationale_70",
       "target": "backend_app_services_llm_service_generate_optimized_prompt",
       "confidence_score": 1.0
     },
@@ -6651,10 +6940,21 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/services/llm_service.py",
-      "source_location": "L75",
+      "source_location": "L80",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "backend_app_services_llm_service_rationale_75",
+      "source": "backend_app_services_llm_service_rationale_80",
+      "target": "backend_app_services_llm_service_execute_prompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/app/services/llm_service.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "backend_app_services_llm_service_rationale_101",
       "target": "backend_app_services_llm_service_run_jailbreak_scan",
       "confidence_score": 1.0
     },
@@ -6796,6 +7096,18 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "frontend/src/App.jsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_app",
+      "target": "ref_react",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "frontend/src/components/OutputPanel/OutputPanel.jsx",
       "source_location": "L1",
       "weight": 1.0,
@@ -6832,6 +7144,18 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "frontend/src/components/Sidebar/Sidebar.jsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_components_sidebar_sidebar",
+      "target": "ref_react",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "frontend/src/main.jsx",
       "source_location": "L1",
       "weight": 1.0,
@@ -6849,6 +7173,30 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_pages_dashboard",
+      "target": "ref_react",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/pages/Landing.jsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_landing",
+      "target": "ref_react",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/pages/Login.jsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_login",
       "target": "ref_react",
       "confidence_score": 1.0
     },
@@ -7356,7 +7704,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/App.jsx",
-      "source_location": "L3",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_app",
@@ -7368,7 +7716,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/App.jsx",
-      "source_location": "L1",
+      "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_app",
@@ -7380,11 +7728,59 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/App.jsx",
-      "source_location": "L1",
+      "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_app",
       "target": "frontend_src_pages_dashboard_dashboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/App.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_app",
+      "target": "frontend_src_pages_landing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/App.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_app",
+      "target": "frontend_src_pages_landing_landing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/App.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_app",
+      "target": "frontend_src_pages_login",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/App.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_app",
+      "target": "frontend_src_pages_login_login",
       "confidence_score": 1.0
     },
     {
@@ -7426,7 +7822,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/components/ContextBar/ContextBar.jsx",
-      "source_location": "L52",
+      "source_location": "L89",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_components_contextbar_contextbar",
@@ -7437,7 +7833,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/components/ContextBar/ContextBar.jsx",
-      "source_location": "L14",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_components_contextbar_contextbar",
@@ -7448,7 +7844,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/components/ContextBar/ContextBar.jsx",
-      "source_location": "L3",
+      "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_components_contextbar_contextbar",
@@ -7459,7 +7855,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/components/ContextBar/ContextBar.jsx",
-      "source_location": "L23",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_components_contextbar_contextbar",
@@ -7467,11 +7863,22 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/components/ContextBar/ContextBar.jsx",
+      "source_location": "L52",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_components_contextbar_contextbar",
+      "target": "frontend_src_components_contextbar_contextbar_pillrow",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/pages/Dashboard.jsx",
-      "source_location": "L8",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_pages_dashboard",
@@ -7483,7 +7890,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/components/ContextBar/ContextBar.jsx",
-      "source_location": "L60",
+      "source_location": "L97",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_components_contextbar_contextbar_contextbar",
@@ -7495,7 +7902,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/pages/Dashboard.jsx",
-      "source_location": "L8",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_pages_dashboard",
@@ -7510,30 +7917,6 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_components_loader_loader",
-      "target": "frontend_src_components_loader_loader_loader",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/src/pages/Dashboard.jsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "frontend_src_pages_dashboard",
-      "target": "frontend_src_components_loader_loader",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/src/pages/Dashboard.jsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "frontend_src_pages_dashboard",
       "target": "frontend_src_components_loader_loader_loader",
       "confidence_score": 1.0
     },
@@ -7576,18 +7959,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/components/OutputPanel/OutputPanel.jsx",
-      "source_location": "L4",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_components_outputpanel_outputpanel",
-      "target": "frontend_src_components_outputpanel_outputpanel_normalizeagentlabel",
+      "target": "frontend_src_components_outputpanel_outputpanel_metricbars",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/components/OutputPanel/OutputPanel.jsx",
-      "source_location": "L218",
+      "source_location": "L45",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_components_outputpanel_outputpanel",
@@ -7598,33 +7981,22 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/components/OutputPanel/OutputPanel.jsx",
-      "source_location": "L180",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "frontend_src_components_outputpanel_outputpanel",
-      "target": "frontend_src_components_outputpanel_outputpanel_panelcontent",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/src/components/OutputPanel/OutputPanel.jsx",
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_components_outputpanel_outputpanel",
-      "target": "frontend_src_components_outputpanel_outputpanel_renderinlinemarkdown",
+      "target": "frontend_src_components_outputpanel_outputpanel_scorering",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/components/OutputPanel/OutputPanel.jsx",
-      "source_location": "L53",
+      "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_components_outputpanel_outputpanel",
-      "target": "frontend_src_components_outputpanel_outputpanel_renderresponsecontent",
+      "target": "frontend_src_components_outputpanel_outputpanel_tabs",
       "confidence_score": 1.0
     },
     {
@@ -7640,42 +8012,6 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/src/components/OutputPanel/OutputPanel.jsx",
-      "source_location": "L232",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "frontend_src_components_outputpanel_outputpanel_outputpanel",
-      "target": "frontend_src_components_outputpanel_outputpanel_normalizeagentlabel",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/src/components/OutputPanel/OutputPanel.jsx",
-      "source_location": "L85",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "frontend_src_components_outputpanel_outputpanel_renderresponsecontent",
-      "target": "frontend_src_components_outputpanel_outputpanel_renderinlinemarkdown",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/src/components/OutputPanel/OutputPanel.jsx",
-      "source_location": "L389",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "frontend_src_components_outputpanel_outputpanel_outputpanel",
-      "target": "frontend_src_components_outputpanel_outputpanel_renderresponsecontent",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -7691,22 +8027,11 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/components/PromptEditor/PromptEditor.jsx",
-      "source_location": "L11",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_components_prompteditor_prompteditor",
-      "target": "frontend_src_components_prompteditor_prompteditor_actions",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/src/components/PromptEditor/PromptEditor.jsx",
-      "source_location": "L25",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "frontend_src_components_prompteditor_prompteditor",
-      "target": "frontend_src_components_prompteditor_prompteditor_prompteditor",
+      "target": "frontend_src_components_prompteditor_prompteditor_editorextensions",
       "confidence_score": 1.0
     },
     {
@@ -7717,79 +8042,29 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_components_prompteditor_prompteditor",
+      "target": "frontend_src_components_prompteditor_prompteditor_highlightxml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/components/PromptEditor/PromptEditor.jsx",
+      "source_location": "L35",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_components_prompteditor_prompteditor",
+      "target": "frontend_src_components_prompteditor_prompteditor_prompteditor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/components/PromptEditor/PromptEditor.jsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_components_prompteditor_prompteditor",
       "target": "frontend_src_components_prompteditor_prompteditor_templates",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/src/components/PromptEditor/PromptEditor.jsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "frontend_src_components_prompteditor_prompteditor",
-      "target": "frontend_src_services_evaluate",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/src/components/PromptEditor/PromptEditor.jsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "frontend_src_components_prompteditor_prompteditor",
-      "target": "frontend_src_services_evaluate_evaluateprompt",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/src/components/PromptEditor/PromptEditor.jsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "frontend_src_components_prompteditor_prompteditor",
-      "target": "frontend_src_services_optimize",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/src/components/PromptEditor/PromptEditor.jsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "frontend_src_components_prompteditor_prompteditor",
-      "target": "frontend_src_services_optimize_optimizeprompt",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/src/components/PromptEditor/PromptEditor.jsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "frontend_src_components_prompteditor_prompteditor",
-      "target": "frontend_src_services_scan",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/src/components/PromptEditor/PromptEditor.jsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "frontend_src_components_prompteditor_prompteditor",
-      "target": "frontend_src_services_scan_scanprompt",
       "confidence_score": 1.0
     },
     {
@@ -7808,37 +8083,13 @@
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
       "source_file": "frontend/src/components/PromptEditor/PromptEditor.jsx",
-      "source_location": "L57",
+      "source_location": "L53",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_components_prompteditor_prompteditor_prompteditor",
-      "target": "frontend_src_services_evaluate_evaluateprompt"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/components/PromptEditor/PromptEditor.jsx",
-      "source_location": "L61",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "frontend_src_components_prompteditor_prompteditor_prompteditor",
-      "target": "frontend_src_services_optimize_optimizeprompt"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/components/PromptEditor/PromptEditor.jsx",
-      "source_location": "L65",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "frontend_src_components_prompteditor_prompteditor_prompteditor",
-      "target": "frontend_src_services_scan_scanprompt"
+      "target": "frontend_src_components_prompteditor_prompteditor_highlightxml",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -7875,34 +8126,10 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/src/pages/Dashboard.jsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "frontend_src_pages_dashboard",
-      "target": "frontend_src_components_scorecard_scorecard",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/src/pages/Dashboard.jsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "frontend_src_pages_dashboard",
-      "target": "frontend_src_components_scorecard_scorecard_scorecard",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/components/Sidebar/Sidebar.jsx",
-      "source_location": "L14",
+      "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_components_sidebar_sidebar",
@@ -7936,8 +8163,19 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "frontend/src/components/StatusBar/StatusBar.jsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_components_statusbar_statusbar",
+      "target": "frontend_src_components_statusbar_statusbar_statusbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "frontend/src/pages/Dashboard.jsx",
-      "source_location": "L43",
+      "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_pages_dashboard",
@@ -7948,7 +8186,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/pages/Dashboard.jsx",
-      "source_location": "L16",
+      "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_pages_dashboard",
@@ -7956,14 +8194,27 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "contains",
+      "relation": "imports_from",
+      "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/pages/Dashboard.jsx",
-      "source_location": "L30",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_pages_dashboard",
-      "target": "frontend_src_pages_dashboard_readprompthistory",
+      "target": "frontend_src_services_evaluate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/pages/Dashboard.jsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_dashboard",
+      "target": "frontend_src_services_evaluate_evaluateprompt",
       "confidence_score": 1.0
     },
     {
@@ -7971,7 +8222,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/pages/Dashboard.jsx",
-      "source_location": "L9",
+      "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_pages_dashboard",
@@ -7983,7 +8234,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/pages/Dashboard.jsx",
-      "source_location": "L9",
+      "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_pages_dashboard",
@@ -7995,7 +8246,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "frontend/src/pages/Dashboard.jsx",
-      "source_location": "L9",
+      "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_pages_dashboard",
@@ -8003,16 +8254,64 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "indirect_call",
-      "context": "argument",
-      "confidence": "INFERRED",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "frontend/src/pages/Dashboard.jsx",
-      "source_location": "L46",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "frontend_src_pages_dashboard_dashboard",
-      "target": "frontend_src_pages_dashboard_readprompthistory",
-      "confidence_score": 0.5
+      "source": "frontend_src_pages_dashboard",
+      "target": "frontend_src_services_scan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/pages/Dashboard.jsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_dashboard",
+      "target": "frontend_src_services_scan_scanprompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/pages/Dashboard.jsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_dashboard",
+      "target": "frontend_src_services_session",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/pages/Dashboard.jsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_dashboard",
+      "target": "frontend_src_services_session_getsessiondetail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/pages/Dashboard.jsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_dashboard",
+      "target": "frontend_src_services_session_listsessions",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -8020,7 +8319,19 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/Dashboard.jsx",
-      "source_location": "L68",
+      "source_location": "L150",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_dashboard_dashboard",
+      "target": "frontend_src_services_evaluate_evaluateprompt"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/pages/Dashboard.jsx",
+      "source_location": "L103",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_pages_dashboard_dashboard",
@@ -8032,11 +8343,191 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/Dashboard.jsx",
-      "source_location": "L67",
+      "source_location": "L103",
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_pages_dashboard_dashboard",
       "target": "frontend_src_services_registry_getusecases"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/pages/Dashboard.jsx",
+      "source_location": "L151",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_dashboard_dashboard",
+      "target": "frontend_src_services_scan_scanprompt"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/pages/Dashboard.jsx",
+      "source_location": "L67",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_dashboard_dashboard",
+      "target": "frontend_src_services_session_getsessiondetail"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/pages/Dashboard.jsx",
+      "source_location": "L57",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_dashboard_dashboard",
+      "target": "frontend_src_services_session_listsessions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/pages/Landing.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_landing",
+      "target": "frontend_src_pages_landing_colors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/pages/Landing.jsx",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_landing",
+      "target": "frontend_src_pages_landing_features",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/pages/Landing.jsx",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_landing",
+      "target": "frontend_src_pages_landing_iconarrow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/pages/Landing.jsx",
+      "source_location": "L50",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_landing",
+      "target": "frontend_src_pages_landing_iconbolt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/pages/Landing.jsx",
+      "source_location": "L66",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_landing",
+      "target": "frontend_src_pages_landing_landing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/pages/Landing.jsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_landing",
+      "target": "frontend_src_pages_landing_models",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/pages/Landing.jsx",
+      "source_location": "L183",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_landing",
+      "target": "frontend_src_pages_landing_styles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/pages/Landing.jsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_landing",
+      "target": "frontend_src_pages_landing_use_cases",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/pages/Login.jsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_login",
+      "target": "frontend_src_pages_login_attachworkspaceinterceptor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/pages/Login.jsx",
+      "source_location": "L142",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_login",
+      "target": "frontend_src_pages_login_colors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/pages/Login.jsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_login",
+      "target": "frontend_src_pages_login_login",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/pages/Login.jsx",
+      "source_location": "L153",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_login",
+      "target": "frontend_src_pages_login_styles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/pages/Login.jsx",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_pages_login_login",
+      "target": "frontend_src_pages_login_attachworkspaceinterceptor",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -8098,6 +8589,18 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/services/session.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_services_session",
+      "target": "frontend_src_services_api",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -8142,6 +8645,18 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "frontend_src_services_scan",
+      "target": "frontend_src_services_api_api",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/services/session.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_services_session",
       "target": "frontend_src_services_api_api",
       "confidence_score": 1.0
     },
@@ -8198,6 +8713,39 @@
       "_origin": "ast",
       "source": "frontend_src_services_scan",
       "target": "frontend_src_services_scan_scanprompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/services/session.js",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_services_session",
+      "target": "frontend_src_services_session_deletesession",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/services/session.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_services_session",
+      "target": "frontend_src_services_session_getsessiondetail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/services/session.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_src_services_session",
+      "target": "frontend_src_services_session_listsessions",
       "confidence_score": 1.0
     },
     {
@@ -9335,5 +9883,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "e97dfb1c6d87c749b5e41e7fdbf955001325b258"
+  "built_at_commit": "b150196a8ee636920e88c1e1dbe46b27fc51cf83"
 }

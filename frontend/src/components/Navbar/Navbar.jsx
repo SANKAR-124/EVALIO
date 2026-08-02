@@ -1,31 +1,46 @@
-import { BadgeCheck, Sparkles, PanelsTopLeft } from 'lucide-react';
+import { Loader2, Sparkles, Zap, Shield } from 'lucide-react';
 
-export default function Navbar() {
+export default function Navbar({ contextLabel, onEvaluate, loading, evaluateDisabled }) {
   return (
-    <header className="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400 via-violet-500 to-fuchsia-500 shadow-lg shadow-cyan-500/20">
-            <Sparkles className="h-5 w-5 text-white" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-lg font-semibold tracking-tight text-slate-100">Evalio</h1>
-              <span className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-cyan-300">
-                Prompt IDE
-              </span>
-            </div>
-            <p className="text-sm text-slate-400">AI-powered prompt evaluation workspace</p>
-          </div>
+    <header className="border-b border-stone-800/80 bg-stone-950/90 py-2.5 px-4 sm:px-6 lg:px-8">
+      <div className="flex items-center justify-between gap-4">
+        {/* Brand logo */}
+        <div className="flex items-center gap-2">
+          <Sparkles className="h-4.5 w-4.5 text-amber-500 fill-amber-500/20" />
+          <span className="text-base font-bold tracking-tight text-amber-500">Evalio</span>
         </div>
 
-        <div className="flex items-center gap-3 rounded-full border border-slate-800 bg-slate-900/80 px-3 py-2 text-sm text-slate-300">
-          <PanelsTopLeft className="h-4 w-4 text-cyan-400" />
-          <span className="font-medium text-slate-200">Northstar Launch</span>
-          <span className="flex items-center gap-1 rounded-full bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold text-emerald-300">
-            <BadgeCheck className="h-3.5 w-3.5" />
-            Workspace
-          </span>
+        {/* Right side actions */}
+        <div className="flex items-center gap-2">
+          {contextLabel && (
+            <div className="flex items-center gap-1.5 rounded-full border border-amber-500/25 bg-amber-500/10 px-3 py-1.5 text-[11px] font-semibold text-amber-300">
+              <Zap className="h-3.5 w-3.5 fill-current" />
+              <span>{contextLabel}</span>
+            </div>
+          )}
+
+
+          <button
+            type="button"
+            onClick={onEvaluate}
+            disabled={evaluateDisabled || loading}
+            className="flex items-center gap-2 rounded-lg bg-amber-500 px-4 py-1.5 text-xs font-bold text-stone-950 transition hover:bg-amber-400 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {loading ? (
+              <>
+                <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                <span>Evaluating...</span>
+              </>
+            ) : (
+              <>
+                <Zap className="h-3.5 w-3.5 fill-current" />
+                <span>Evaluate</span>
+                <span className="ml-1 rounded bg-stone-950/15 px-1 py-0.5 text-[9px] font-bold text-stone-900">
+                  ⌘⏎
+                </span>
+              </>
+            )}
+          </button>
         </div>
       </div>
     </header>
