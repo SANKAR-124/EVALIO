@@ -82,23 +82,6 @@ export default function OutputPanel({ evaluation, error, loading }) {
   };
 
   return (
-    <section className="rounded-3xl border border-slate-800 bg-slate-900/60 p-4 shadow-2xl shadow-slate-950/20 backdrop-blur">
-
-      {/* Header */}
-
-      <div className="mb-4 flex items-center justify-between">
-
-        <div>
-          <p className="text-sm font-semibold text-slate-200">
-            {fallback.title}
-          </p>
-
-          <p className="text-sm text-slate-400">
-            Live preview with actionable feedback
-          </p>
-        </div>
-
-        <div className="flex items-center gap-2">
     <section className="flex h-full flex-col overflow-hidden rounded-2xl border border-stone-800 bg-stone-950/60">
       {/* Tab bar */}
       <div className="flex items-center justify-between border-b border-stone-800/80 bg-stone-900/40 px-3 py-2">
@@ -117,28 +100,6 @@ export default function OutputPanel({ evaluation, error, loading }) {
               {tab}
             </button>
           ))}
-        </div>
-
-        <div className="flex items-center gap-1.5">
-          <button
-            type="button"
-            onClick={handleCopyOutput}
-            disabled={!optimizedPrompt}
-            className="flex items-center gap-2 rounded-full border border-slate-700 bg-slate-950/80 px-3 py-2 text-xs font-medium text-slate-300 transition hover:border-slate-600 hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            <Copy className="h-3.5 w-3.5" />
-            {copied ? 'Copied!' : 'Copy Output'}
-          </button>
-
-          <button
-            type="button"
-            onClick={handleDownloadOutput}
-            disabled={!optimizedPrompt}
-            title="Download optimized prompt"
-            className="rounded-lg p-1.5 text-stone-400 transition hover:bg-stone-800 hover:text-stone-200 disabled:cursor-not-allowed disabled:opacity-40"
-          >
-            <Download className="h-3.5 w-3.5" />
-          </button>
         </div>
       </div>
 
