@@ -160,8 +160,8 @@
     "semantic_hash": ""
   },
   "frontend/src/pages/Dashboard.jsx": {
-    "mtime": 1785640018.1120975,
-    "ast_hash": "536f076778dc7d6ffb20d12799277692",
+    "mtime": 1785639149.3008826,
+    "ast_hash": "6312af36913e8f7c77c94206858162b3",
     "semantic_hash": ""
   },
   "frontend/src/services/api.js": {

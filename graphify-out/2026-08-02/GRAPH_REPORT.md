@@ -1,11 +1,11 @@
 # Graph Report - EVALIO  (2026-08-02)
 
 ## Corpus Check
-- 48 files · ~33,910 words
+- 48 files · ~33,912 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 341 nodes · 490 edges · 23 communities (20 shown, 3 thin omitted)
+- 341 nodes · 492 edges · 22 communities (19 shown, 3 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 1 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
@@ -60,11 +60,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (23 total, 3 thin omitted)
+## Communities (22 total, 3 thin omitted)
 
 ### Community 0 - "Dashboard.jsx"
 Cohesion: 0.08
-Nodes (26): plugins, App(), ContextBar(), DEFAULT_AGENTS, DEFAULT_USE_CASES, normalizeOptions(), Navbar(), metricBars (+18 more)
+Nodes (27): plugins, App(), ContextBar(), DEFAULT_AGENTS, DEFAULT_USE_CASES, normalizeOptions(), Navbar(), metricBars (+19 more)
 
 ### Community 1 - "evaluate.py"
 Cohesion: 0.08
@@ -135,7 +135,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **What connects `$schema`, `oxc`, `react/rules-of-hooks` to the rest of the system?**
   _122 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Dashboard.jsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.080338266384778 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07632850241545894 - nodes in this community are weakly interconnected._
 - **Should `evaluate.py` be split into smaller, more focused modules?**
   _Cohesion score 0.08080808080808081 - nodes in this community are weakly interconnected._
 - **Should `Evalio — Feature Extension Playbook (Sankar + Coding Agent)` be split into smaller, more focused modules?**

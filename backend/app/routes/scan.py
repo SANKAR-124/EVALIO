@@ -67,7 +67,8 @@ async def scan_prompt(
             prompt=request.prompt,
             is_vulnerable=scan_res.is_vulnerable,
             vulnerability_type=scan_res.vulnerability_type,
-            explanation=scan_res.explanation
+            explanation=scan_res.explanation,
+            suggested_mitigation=scan_res.suggested_mitigation
         )
         await scan_doc.insert()
     except Exception as db_exc:

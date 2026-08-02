@@ -114,6 +114,9 @@ async def evaluate_prompt(
             ),
             timeout=LLM_TIMEOUT
         )
+        
+        # Execute the optimized prompt to get the agent's output response
+        agent_response = await llm_service.execute_prompt(optimized_prompt, system_context=system_context)
     except asyncio.TimeoutError as e:
         logger.error(f"Timeout calling AI services for workspace {workspace_id}", exc_info=True)
         raise HTTPException(
@@ -157,6 +160,7 @@ async def evaluate_prompt(
     session.messages.append({
         "role": "assistant",
         "content": optimized_prompt,
+        "agent_response": agent_response,
         "timestamp": timestamp
     })
     
@@ -181,5 +185,6 @@ async def evaluate_prompt(
         session_id=str(session.id),
         scorecard=scorecard,
         optimized_prompt=optimized_prompt,
-        chat_history=chat_history
+        chat_history=chat_history,
+        agent_response=agent_response
     )
