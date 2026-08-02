@@ -20,10 +20,10 @@ USE_CASE_REGISTRY: dict[str, dict] = {
         "description": "Evaluate and optimize prompts for AI image generation models like DALL-E, Midjourney, and Stable Diffusion.",
         "evaluation_focus": [
             "Art style specificity and reference accuracy",
-            "Composition and camera angle definition",
+            "Composition, camera angle, and aspect ratio definition",
             "Lighting conditions and mood description",
             "Negative prompt coverage for unwanted elements",
-            "Quality boosters and resolution specification",
+            "Quality boosters and technical parameters",
             "Color palette definition and harmony",
         ],
         "scorecard_weight_overrides": {
@@ -32,15 +32,15 @@ USE_CASE_REGISTRY: dict[str, dict] = {
             "formatting": 40,
         },
         "optimizer_system_addition": (
-            "You are an expert image-prompt engineer specializing in DALL-E, Midjourney, and Stable Diffusion.\n"
-            "When rewriting the user's prompt, you MUST produce a dense, comma-separated visual description that includes ALL of the following elements:\n"
-            "(a) A specific art style reference (e.g., 'in the style of Studio Ghibli watercolor', 'hyper-realistic digital painting', 'low-poly 3D render').\n"
+            "The user is writing a prompt for AI image generation (DALL-E, Midjourney, or Stable Diffusion).\n"
+            "Rewrite the prompt to include ALL of the following visual elements:\n"
+            "(a) Art style with a specific reference (e.g., 'Studio Ghibli watercolor', 'hyper-realistic digital painting', 'low-poly 3D render', 'pencil sketch').\n"
             "(b) Lighting and mood (e.g., 'golden hour rim lighting', 'dramatic chiaroscuro', 'soft diffused overcast').\n"
-            "(c) Composition and camera perspective (e.g., 'wide-angle establishing shot', 'close-up portrait at eye level', 'bird's-eye view').\n"
-            "(d) A defined color palette (e.g., 'muted earth tones with teal accents', 'vibrant neon cyberpunk palette').\n"
-            "(e) Quality boosters (e.g., '8K resolution, highly detailed, sharp focus, trending on ArtStation').\n"
-            "(f) A negative prompt section prefixed with '--no' listing elements to exclude (e.g., '--no blurry, watermark, text, low quality, deformed hands').\n"
-            "Do NOT output explanations or markdown. Output ONLY the rewritten image prompt as a single dense description."
+            "(c) Composition and camera perspective (e.g., 'wide-angle establishing shot', 'close-up portrait at eye level', \"bird's-eye view\").\n"
+            "(d) Color palette (e.g., 'muted earth tones with teal accents', 'vibrant neon cyberpunk palette', 'monochrome with red highlights').\n"
+            "(e) Quality and technical parameters (e.g., '8K, highly detailed, sharp focus', 'trending on ArtStation', aspect ratio like '16:9' or 'portrait 4:5').\n"
+            "(f) Negative prompt listing elements to exclude (e.g., 'exclude: blurry, watermark, text, deformed hands, low quality').\n"
+            "Format the output as a natural language visual description — do NOT use Midjourney-specific syntax (--) unless the original prompt already uses it."
         ),
     },
 
@@ -53,12 +53,12 @@ USE_CASE_REGISTRY: dict[str, dict] = {
         "icon": "🎬",
         "description": "Evaluate and optimize prompts for AI video generation models like Sora, Runway, Pika, and Kling.",
         "evaluation_focus": [
-            "Camera movement type and speed specification",
-            "Temporal progression and pacing clarity",
-            "Scene transition descriptions for multi-scene prompts",
-            "Subject motion and action description",
-            "Lighting changes and evolution over time",
-            "Output duration and aspect ratio hints",
+            "Camera movement type, speed, and direction specification",
+            "Temporal progression and scene evolution clarity",
+            "Subject motion and action specificity",
+            "Environment and setting description",
+            "Lighting changes over the clip duration",
+            "Aspect ratio and duration specification",
         ],
         "scorecard_weight_overrides": {
             "clarity": 30,
@@ -66,15 +66,15 @@ USE_CASE_REGISTRY: dict[str, dict] = {
             "formatting": 40,
         },
         "optimizer_system_addition": (
-            "You are an expert video-prompt engineer specializing in Sora, Runway, Pika, and Kling.\n"
-            "When rewriting the user's prompt, you MUST produce a structured video generation prompt that specifies ALL of the following:\n"
-            "(a) Camera movement with precise terminology (pan left/right, tilt up/down, dolly in/out, crane shot, tracking shot) and speed (slow, medium, fast).\n"
-            "(b) Temporal progression describing how the scene evolves from start to end.\n"
-            "(c) Subject motion with specific actions, speed, and directionality.\n"
-            "(d) Lighting evolution describing how light changes throughout the clip (e.g., 'sunrise transitioning from cool blue to warm golden').\n"
-            "(e) Scene transitions if multi-scene (cut, dissolve, whip pan, match cut).\n"
-            "(f) Duration and pacing hints (e.g., '4-second clip', 'slow-motion at 0.5x speed').\n"
-            "Do NOT output explanations or markdown. Output ONLY the rewritten video prompt."
+            "The user is writing a prompt for AI video generation (Sora, Runway, Pika, or Kling).\n"
+            "Rewrite the prompt to specify ALL of the following:\n"
+            "(a) Environment and setting with visual details (location, weather, time of day, atmosphere).\n"
+            "(b) Subject and their specific motion (what they do, speed, direction, physical actions).\n"
+            "(c) Camera movement using precise terminology (pan, tilt, dolly, crane, tracking shot, orbit) with speed (slow, medium, fast).\n"
+            "(d) How the scene evolves from start to end (temporal progression — what changes over the clip duration).\n"
+            "(e) Lighting and how it shifts during the clip (e.g., 'sunrise transitioning from cool blue to warm golden').\n"
+            "(f) Technical parameters: aspect ratio (16:9, 9:16, 1:1), clip duration (e.g., '4-second clip'), pacing (real-time, slow-motion, time-lapse).\n"
+            "Focus on a single coherent scene — multi-scene prompts produce unreliable results in current video models."
         ),
     },
 
@@ -87,13 +87,13 @@ USE_CASE_REGISTRY: dict[str, dict] = {
         "icon": "⚙️",
         "description": "Evaluate and optimize prompts for backend engineering tasks including API design, database architecture, and server-side logic.",
         "evaluation_focus": [
-            "Tech stack and framework specification",
+            "Tech stack, framework, and runtime specification",
+            "API endpoint definition (method, path, schema)",
             "Authentication and authorization strategy",
-            "Error handling patterns and HTTP status codes",
-            "Database schema and ORM/query patterns",
-            "Input validation and sanitization rules",
-            "Security constraints and threat mitigation",
-            "API versioning and deprecation strategy",
+            "Error handling with specific HTTP status codes",
+            "Database schema, ORM patterns, and query design",
+            "Security constraints and input validation",
+            "Observability (logging, monitoring, error tracking)",
         ],
         "scorecard_weight_overrides": {
             "clarity": 30,
@@ -101,17 +101,16 @@ USE_CASE_REGISTRY: dict[str, dict] = {
             "formatting": 35,
         },
         "optimizer_system_addition": (
-            "You are a senior backend architect with deep expertise in API design, distributed systems, and production-grade server engineering.\n"
-            "When rewriting the user's prompt, you MUST produce a comprehensive backend specification that addresses ALL of the following:\n"
-            "(a) Tech stack and framework (language, framework version, runtime).\n"
-            "(b) Authentication/authorization pattern (JWT, OAuth2, API keys, RBAC).\n"
-            "(c) Request/response schema with explicit input validation rules (types, ranges, required fields).\n"
-            "(d) Error handling strategy with specific HTTP status codes for each failure mode.\n"
-            "(e) Database patterns (schema design, ORM usage, migrations, indexing strategy).\n"
-            "(f) Security constraints (CORS, rate limiting, input sanitization, SQL injection prevention).\n"
-            "(g) Rate limiting and throttling configuration.\n"
-            "(h) Logging, monitoring, and observability requirements.\n"
-            "Do NOT output explanations or markdown. Output ONLY the rewritten backend engineering prompt."
+            "The user is writing a prompt for a backend development task.\n"
+            "Rewrite the prompt to include ALL of the following:\n"
+            "(a) Tech stack with specific versions (language, framework, runtime, database).\n"
+            "(b) API endpoint definitions: HTTP method, path, request body schema with types, query parameters, and expected response schema.\n"
+            "(c) Authentication and authorization pattern (JWT, OAuth2, API keys, session-based) with specifics about token handling and protected routes.\n"
+            "(d) Input validation rules for every field (type, range, required/optional, sanitization).\n"
+            "(e) Error handling: map each failure mode to a specific HTTP status code with error response schema.\n"
+            "(f) Database design: schema, key relationships, ORM patterns, indexing strategy.\n"
+            "(g) Security and infrastructure: CORS, rate limiting, SQL injection prevention, logging strategy, and environment configuration.\n"
+            "Prioritize (a) and (b) — without a clear stack and endpoint definition, everything else is context-less."
         ),
     },
 
@@ -124,12 +123,12 @@ USE_CASE_REGISTRY: dict[str, dict] = {
         "icon": "🖥️",
         "description": "Evaluate and optimize prompts for frontend engineering including component design, responsive layouts, and user interaction patterns.",
         "evaluation_focus": [
-            "Component hierarchy and composition structure",
-            "Responsive design breakpoints and behavior",
-            "Accessibility compliance (WCAG 2.1 / ARIA attributes)",
+            "Component hierarchy and prop interface definitions",
+            "Responsive design breakpoints and layout behavior",
+            "Accessibility (semantic HTML, ARIA, keyboard navigation)",
             "State management pattern and data flow",
-            "Styling approach and design system adherence",
-            "Interaction states (hover, focus, loading, error, empty)",
+            "All interaction states (hover, focus, loading, error, empty)",
+            "Theme support (light/dark mode) and design tokens",
             "Performance considerations (lazy loading, code splitting)",
         ],
         "scorecard_weight_overrides": {
@@ -138,16 +137,16 @@ USE_CASE_REGISTRY: dict[str, dict] = {
             "formatting": 40,
         },
         "optimizer_system_addition": (
-            "You are a senior frontend engineer and UI architect with expertise in modern component-driven frameworks.\n"
-            "When rewriting the user's prompt, you MUST produce a comprehensive frontend specification that addresses ALL of the following:\n"
-            "(a) Component tree structure with parent-child relationships and prop interfaces.\n"
-            "(b) Responsive design breakpoints (mobile ≤768px, tablet ≤1024px, desktop >1024px) with layout behavior at each.\n"
-            "(c) Accessibility requirements (semantic HTML, ARIA labels, keyboard navigation, screen reader compatibility).\n"
-            "(d) State management pattern (local state, context, Redux/Zustand, server state with React Query).\n"
-            "(e) Styling methodology (CSS modules, Tailwind, styled-components) with design token references.\n"
-            "(f) All interaction states: default, hover, focus, active, loading, error, disabled, empty/skeleton.\n"
-            "(g) Performance optimizations: lazy loading, code splitting, image optimization, memoization.\n"
-            "Do NOT output explanations or markdown. Output ONLY the rewritten frontend engineering prompt."
+            "The user is writing a prompt for a frontend/UI development task.\n"
+            "Rewrite the prompt to include ALL of the following:\n"
+            "(a) Component tree with parent-child relationships and prop interfaces (props name, type, required/optional, description).\n"
+            "(b) Responsive breakpoints with layout behavior at each: mobile (≤768px), tablet (≤1024px), desktop (>1024px).\n"
+            "(c) Accessibility requirements: semantic HTML elements, ARIA labels, keyboard navigation flow, screen reader compatibility.\n"
+            "(d) State management: which state is local, which is shared, and the data flow direction (props down, events up).\n"
+            "(e) All interaction states the component must handle: default, hover, focus, active, loading, error, disabled, empty/skeleton.\n"
+            "(f) Styling methodology and theme support: design tokens, light/dark mode handling, CSS approach.\n"
+            "(g) Performance requirements: lazy loading, code splitting, image optimization, memoization needs.\n"
+            "Do NOT assume a specific framework (React, Vue, Svelte) unless the user's original prompt mentions one — keep framework references generic."
         ),
     },
 
@@ -160,12 +159,12 @@ USE_CASE_REGISTRY: dict[str, dict] = {
         "icon": "📊",
         "description": "Evaluate and optimize prompts for data analysis workflows including statistical methods, visualization, and insight extraction.",
         "evaluation_focus": [
-            "Expected input data format and schema definition",
+            "Input data format, schema, and sample structure",
             "Statistical methods and analytical approach",
-            "Output format specification (tables, charts, metrics)",
+            "Output deliverables (tables, charts, metrics, insights)",
             "Edge case handling (missing data, outliers, nulls)",
             "Visualization types and chart selection rationale",
-            "Business context and KPI definitions",
+            "Business context, KPIs, and actionability of insights",
         ],
         "scorecard_weight_overrides": {
             "clarity": 30,
@@ -173,16 +172,15 @@ USE_CASE_REGISTRY: dict[str, dict] = {
             "formatting": 35,
         },
         "optimizer_system_addition": (
-            "You are a senior data analyst with expertise in statistical methods, data visualization, and business intelligence.\n"
-            "When rewriting the user's prompt, you MUST produce a comprehensive data analysis specification that addresses ALL of the following:\n"
-            "(a) Input data format with explicit schema (column names, data types, expected ranges, sample rows).\n"
-            "(b) Statistical methods to apply (descriptive stats, hypothesis tests, regression, clustering) with justification.\n"
-            "(c) Output format specifying exact deliverables (summary tables, charts, metric dashboards, written insights).\n"
-            "(d) Edge case handling: strategy for missing values (impute, drop, flag), outlier detection method, and null handling.\n"
-            "(e) Visualization types with specific chart recommendations (bar, line, scatter, heatmap) and axis definitions.\n"
-            "(f) KPI definitions tied to business objectives with target thresholds.\n"
-            "(g) Reproducibility requirements (random seeds, version pinning, notebook structure).\n"
-            "Do NOT output explanations or markdown. Output ONLY the rewritten data analysis prompt."
+            "The user is writing a prompt for a data analysis task.\n"
+            "Rewrite the prompt to include ALL of the following:\n"
+            "(a) Input data specification: column names, data types, expected ranges, a few sample rows, and total dataset size.\n"
+            "(b) Analytical approach: which statistical methods to apply and WHY (e.g., 'use Pearson correlation because we need linear relationship strength').\n"
+            "(c) Output deliverables: exact list of what to produce (summary statistics table, specific chart types with axis definitions, written insights, metric calculations).\n"
+            "(d) Edge case strategy: how to handle missing values (impute, drop, flag), how to detect and treat outliers, null handling approach.\n"
+            "(e) Visualization specifications: chart type for each analysis question, axis labels, legend placement, and color encoding logic.\n"
+            "(f) Business context: what decision the analysis informs, KPI definitions with target thresholds, and what constitutes a meaningful vs. noise-level result.\n"
+            "Include preferred tools/libraries only if the user's original prompt mentions them."
         ),
     },
 
@@ -195,13 +193,12 @@ USE_CASE_REGISTRY: dict[str, dict] = {
         "icon": "✍️",
         "description": "Evaluate and optimize prompts for professional content creation including blogs, marketing copy, technical writing, and SEO-optimized articles.",
         "evaluation_focus": [
-            "Target audience persona and demographic clarity",
+            "Content type and format definition",
+            "Target audience persona and reading level",
             "Tone, voice, and brand consistency guidelines",
-            "Content structure and outline specification",
-            "SEO keywords and strategic placement instructions",
-            "Word count and length constraints",
-            "Call-to-action definition and placement",
-            "Formatting rules (headings, bullets, links, media)",
+            "Content structure and heading hierarchy",
+            "SEO keywords and placement strategy",
+            "Word count, CTA, and formatting constraints",
         ],
         "scorecard_weight_overrides": {
             "clarity": 35,
@@ -209,16 +206,15 @@ USE_CASE_REGISTRY: dict[str, dict] = {
             "formatting": 40,
         },
         "optimizer_system_addition": (
-            "You are a professional content strategist with expertise in SEO, copywriting, and editorial best practices.\n"
-            "When rewriting the user's prompt, you MUST produce a comprehensive content brief that addresses ALL of the following:\n"
-            "(a) Audience persona with demographics, pain points, and reading level.\n"
-            "(b) Tone and voice guidelines (formal/informal, authoritative/conversational, brand voice references).\n"
-            "(c) Content structure with a detailed outline (H1, H2, H3 hierarchy, intro hook, body sections, conclusion).\n"
-            "(d) SEO keywords (primary keyword, 3-5 secondary keywords) with placement instructions (title, meta description, first paragraph, headings).\n"
-            "(e) Word count target with acceptable range.\n"
-            "(f) Call-to-action with specific text, placement, and desired user behavior.\n"
-            "(g) Formatting rules: heading hierarchy, bullet point usage, internal/external link requirements, image/media placeholders.\n"
-            "Do NOT output explanations or markdown. Output ONLY the rewritten content writing prompt."
+            "The user is writing a prompt for content creation.\n"
+            "Rewrite the prompt to include ALL of the following:\n"
+            "(a) Content type with specific format (blog post, landing page, email newsletter, social media thread, technical documentation, whitepaper).\n"
+            "(b) Audience persona: who they are, their expertise level, what they care about, and their reading level.\n"
+            "(c) Tone and voice: formal/informal, authoritative/conversational, first/third person, and any brand voice references.\n"
+            "(d) Content structure: heading hierarchy (H1, H2, H3), intro hook strategy, body section breakdown, conclusion type.\n"
+            "(e) SEO keywords: primary keyword, 3-5 secondary keywords, and where each must appear (title, first paragraph, at least 2 headings, meta description).\n"
+            "(f) Constraints: word count with acceptable range, call-to-action with placement and desired behavior, formatting rules (bullet usage, link requirements, image placeholders).\n"
+            "Differentiate the content from competitors — if the user mentions a competitor or alternative, include a 'unique angle' instruction."
         ),
     },
 
@@ -231,12 +227,12 @@ USE_CASE_REGISTRY: dict[str, dict] = {
         "icon": "🔍",
         "description": "Evaluate and optimize prompts for automated code review focusing on security vulnerabilities, performance issues, and maintainability.",
         "evaluation_focus": [
+            "Target language and framework specification",
             "Security vulnerability categories (OWASP Top 10)",
             "Performance anti-patterns and bottleneck detection",
-            "Code style, readability, and maintainability criteria",
-            "Severity classification system (critical, high, medium, low)",
-            "False positive handling and confidence scoring",
-            "Remediation suggestions with code examples",
+            "Severity classification with clear criteria",
+            "Report format with file/line references",
+            "Remediation suggestions with before/after examples",
         ],
         "scorecard_weight_overrides": {
             "clarity": 25,
@@ -244,15 +240,14 @@ USE_CASE_REGISTRY: dict[str, dict] = {
             "formatting": 35,
         },
         "optimizer_system_addition": (
-            "You are a senior security engineer and code reviewer with expertise in OWASP, secure coding practices, and performance optimization.\n"
-            "When rewriting the user's prompt, you MUST produce a comprehensive code review specification that addresses ALL of the following:\n"
-            "(a) Vulnerability categories to check (injection, XSS, CSRF, insecure deserialization, broken auth, security misconfiguration).\n"
-            "(b) Performance checks (N+1 queries, unnecessary allocations, blocking I/O, memory leaks, algorithmic complexity).\n"
-            "(c) Code style and maintainability criteria (naming conventions, function length, cyclomatic complexity, DRY violations).\n"
-            "(d) Severity classification: Critical (exploitable now), High (exploitable with effort), Medium (best practice violation), Low (style/readability).\n"
-            "(e) Report format with file path, line number references, issue description, and severity tag.\n"
-            "(f) Remediation suggestions with before/after code snippets for each finding.\n"
-            "Do NOT output explanations or markdown. Output ONLY the rewritten code review prompt."
+            "The user is writing a prompt for automated code review.\n"
+            "Rewrite the prompt to include ALL of the following:\n"
+            "(a) Target language, framework, and version (e.g., 'Python 3.11 with FastAPI', 'TypeScript with Next.js 15'). Without this, the review cannot check framework-specific anti-patterns.\n"
+            "(b) Security categories to scan: specify which OWASP Top 10 categories are relevant (e.g., injection, XSS, CSRF, broken authentication, insecure deserialization). Not all 10 apply to every codebase.\n"
+            "(c) Performance checks: specify which anti-patterns to look for (N+1 queries, memory leaks, unnecessary re-renders, blocking I/O, algorithmic complexity concerns).\n"
+            "(d) Severity classification with explicit criteria: Critical (exploitable, data breach risk), High (exploitable with effort, logic errors), Medium (best practice violation, maintainability), Low (style, naming, readability).\n"
+            "(e) Report format: require file path, line number range, severity tag, issue description, and a before/after code snippet showing the fix.\n"
+            "(f) Scope boundaries: what to review (only changed files? entire module? specific directories?) and what to exclude (tests, generated code, third-party)."
         ),
     },
 
@@ -265,12 +260,13 @@ USE_CASE_REGISTRY: dict[str, dict] = {
         "icon": "🤖",
         "description": "Evaluate and optimize prompts for machine learning workflows including model selection, training pipelines, and deployment strategies.",
         "evaluation_focus": [
-            "Problem formulation and task type classification",
-            "Data requirements and preprocessing pipeline",
-            "Model selection rationale and architecture choice",
-            "Evaluation metrics and validation strategy",
-            "Hyperparameter constraints and search space",
-            "Deployment and serving requirements",
+            "Problem type, task classification, and objective function",
+            "Data requirements, schema, and preprocessing pipeline",
+            "Model selection rationale and architecture justification",
+            "Evaluation metrics, validation strategy, and baselines",
+            "Hyperparameter constraints and search strategy",
+            "Training pipeline, checkpointing, and early stopping",
+            "Deployment constraints and serving requirements",
             "Reproducibility and experiment tracking",
         ],
         "scorecard_weight_overrides": {
@@ -279,17 +275,17 @@ USE_CASE_REGISTRY: dict[str, dict] = {
             "formatting": 35,
         },
         "optimizer_system_addition": (
-            "You are a senior ML engineer with expertise in end-to-end machine learning pipelines, from data preprocessing to production deployment.\n"
-            "When rewriting the user's prompt, you MUST produce a comprehensive ML specification that addresses ALL of the following:\n"
-            "(a) Problem type and formulation (classification, regression, clustering, ranking, generative) with explicit objective function.\n"
-            "(b) Data requirements: expected schema, volume, labeling strategy, train/val/test split ratios, augmentation techniques.\n"
-            "(c) Model selection criteria with justification (why this architecture over alternatives).\n"
-            "(d) Evaluation metrics (primary metric for optimization, secondary metrics for monitoring, baseline to beat).\n"
-            "(e) Hyperparameter search space with ranges and search strategy (grid, random, Bayesian).\n"
-            "(f) Training pipeline steps: preprocessing, feature engineering, training loop, checkpointing, early stopping criteria.\n"
-            "(g) Deployment constraints: latency budget, throughput requirements, hardware target (CPU/GPU/edge), model format (ONNX, TensorRT).\n"
-            "(h) Reproducibility requirements: random seeds, dependency pinning, experiment tracking (MLflow/W&B), artifact versioning.\n"
-            "Do NOT output explanations or markdown. Output ONLY the rewritten machine learning prompt."
+            "The user is writing a prompt for a machine learning task.\n"
+            "Rewrite the prompt to include ALL of the following:\n"
+            "(a) Problem formulation: task type (classification, regression, clustering, ranking, generation), explicit objective function, and what 'success' looks like.\n"
+            "(b) Data specification: schema, volume, labeling strategy, train/val/test split ratios, and preprocessing steps (normalization, encoding, augmentation).\n"
+            "(c) Model selection: which architecture and WHY it fits this problem over alternatives (e.g., 'Transformer over LSTM because of long-range dependencies').\n"
+            "(d) Evaluation plan: primary metric for optimization, secondary monitoring metrics, baseline to beat, and validation strategy (k-fold, time-series split, etc.).\n"
+            "(e) Hyperparameter search: key parameters to tune, value ranges, and search strategy (grid, random, Bayesian).\n"
+            "(f) Training pipeline: preprocessing steps, feature engineering, training loop configuration, checkpointing, and early stopping criteria.\n"
+            "(g) Deployment requirements: latency budget, throughput target, hardware (CPU/GPU/edge), model format (ONNX, TensorRT, TorchScript), and post-deployment monitoring plan.\n"
+            "(h) Reproducibility: random seeds, dependency pinning, experiment tracking tool (MLflow, W&B, etc.), and artifact versioning.\n"
+            "If the task involves personal data or high-stakes decisions, include a bias and fairness evaluation requirement."
         ),
     },
 }
