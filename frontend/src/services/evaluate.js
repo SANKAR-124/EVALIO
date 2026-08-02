@@ -1,5 +1,6 @@
 import api from "./api";
 
+export const evaluatePrompt = async (rawPrompt) => {
 export const evaluatePrompt = async (rawPrompt, useCase = null, targetAgent = null) => {
     const sessionId = localStorage.getItem("session_id") || "";
 
